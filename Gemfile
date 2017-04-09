@@ -25,6 +25,12 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+
+  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-its'
+
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :development do
