@@ -22,6 +22,9 @@ gem 'jbuilder', '~> 2.5'
 # Define Abilites of Models in one place
 gem 'cancancan'
 
+# Registration and sessions
+gem 'devise'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
