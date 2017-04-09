@@ -31,6 +31,9 @@ group :development, :test do
 
   gem 'factory_girl_rails'
   gem 'faker'
+
+  # Lint code
+  gem 'rubocop', require: false
 end
 
 group :development do
