@@ -10,12 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410031149) do
+ActiveRecord::Schema.define(version: 20170410031753) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "attorneys", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "address_id"
+    t.integer  "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_attorneys_on_address_id"
+    t.index ["contact_id"], name: "index_attorneys_on_contact_id"
+    t.index ["email"], name: "index_attorneys_on_email", unique: true
   end
 
   create_table "contacts", force: :cascade do |t|
