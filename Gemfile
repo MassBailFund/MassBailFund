@@ -26,6 +26,8 @@ gem 'cancancan'
 # Registration and sessions
 gem 'devise'
 
+gem 'simple_form'
+
 # generate entity relationship diagrams
 gem 'rails-erd', require: false, group: :erd
 
