@@ -48,6 +48,7 @@ GEM
       thor (~> 0.18)
     byebug (9.0.6)
     cancancan (1.16.0)
+    choice (0.2.0)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -124,6 +125,11 @@ GEM
     rails-dom-testing (2.0.2)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6)
+    rails-erd (1.5.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
     rails_12factor (0.0.3)
@@ -170,6 +176,7 @@ GEM
       rainbow (>= 1.99.1, < 3.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
+    ruby-graphviz (1.2.2)
     ruby-progressbar (1.8.1)
     sass (3.4.23)
     sass-rails (5.0.6)
@@ -230,6 +237,7 @@ DEPENDENCIES
   pg
   puma (~> 3.0)
   rails (~> 5.0.2)
+  rails-erd
   rails_12factor
   rspec-its
   rspec-rails (~> 3.5)

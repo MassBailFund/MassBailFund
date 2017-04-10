@@ -25,6 +25,9 @@ gem 'cancancan'
 # Registration and sessions
 gem 'devise'
 
+# generate entity relationship diagrams
+gem 'rails-erd', require: false, group: :erd
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
