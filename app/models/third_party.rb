@@ -7,4 +7,7 @@ class ThirdParty < ApplicationRecord
   validates :address, presence: true
   validates :contact, presence: true
   validates :relationship_to_client, presence: true
+
+  accepts_nested_attributes_for :contact
+  accepts_nested_attributes_for :address
 end

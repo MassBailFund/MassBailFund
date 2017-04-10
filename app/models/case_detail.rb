@@ -8,4 +8,8 @@ class CaseDetail < ApplicationRecord
   validates :third_party, presence: true
   validates :client, presence: true
   validates :facility, presence: true
+
+  accepts_nested_attributes_for :attorney
+  accepts_nested_attributes_for :third_party
+  accepts_nested_attributes_for :client
 end
