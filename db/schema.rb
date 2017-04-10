@@ -10,7 +10,88 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170409215813) do
+ActiveRecord::Schema.define(version: 20170410034308) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "attorneys", force: :cascade do |t|
+    t.string   "email"
+    t.integer  "address_id"
+    t.integer  "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_attorneys_on_address_id"
+    t.index ["contact_id"], name: "index_attorneys_on_contact_id"
+    t.index ["email"], name: "index_attorneys_on_email", unique: true
+  end
+
+  create_table "case_details", force: :cascade do |t|
+    t.integer  "attorney_id"
+    t.integer  "third_party_id"
+    t.integer  "client_id"
+    t.integer  "facility_id"
+    t.string   "docket_number"
+    t.string   "charges"
+    t.date     "arraignment_date"
+    t.date     "appearance_date"
+    t.decimal  "bail_amount"
+    t.boolean  "gps_required"
+    t.string   "court"
+    t.string   "open_cases_description"
+    t.string   "warrants_description"
+    t.string   "support_person_description"
+    t.string   "released_upon_posting_description"
+    t.string   "school_description"
+    t.string   "employment_description"
+    t.string   "housing_description"
+    t.string   "history_description"
+    t.string   "additional_info"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["attorney_id"], name: "index_case_details_on_attorney_id"
+    t.index ["client_id"], name: "index_case_details_on_client_id"
+    t.index ["facility_id"], name: "index_case_details_on_facility_id"
+    t.index ["third_party_id"], name: "index_case_details_on_third_party_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string   "email"
+    t.date     "birth_date"
+    t.integer  "address_id"
+    t.integer  "contact_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_clients_on_address_id"
+    t.index ["contact_id"], name: "index_clients_on_contact_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "facilities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_facilities_on_name", unique: true
+  end
+
+  create_table "third_parties", force: :cascade do |t|
+    t.string   "relationship_to_client"
+    t.integer  "address_id"
+    t.integer  "contact_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["address_id"], name: "index_third_parties_on_address_id"
+    t.index ["contact_id"], name: "index_third_parties_on_contact_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
