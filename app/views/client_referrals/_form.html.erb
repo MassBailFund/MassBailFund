@@ -1,0 +1,71 @@
+<%= simple_form_for @client_referral do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+        <div>
+          <h3>Attorney</h3>
+
+          <%= f.input :attorney_name %>
+          <%= f.input :attorney_email %>
+          <%= f.input :attorney_phone %>
+          <%= f.input :attorney_address %>
+        </div>
+
+        <div>
+          <h3>Defendant</h3>
+
+          <%= f.input :client_name %>
+          <%= f.input :client_email %>
+          <%= f.input :client_phone %>
+          <%= f.input :client_address %>
+          <%= f.input :client_birth_date, as: :date, html5: true %>
+        </div>
+
+        <div>
+          <h3>Reference</h3>
+
+          <p><%= t('case_detail.third_party.description') %></p>
+
+          <%= f.input :third_party_name %>
+          <%# for some reason email is not included her %>
+          <%= f.input :third_party_phone %>
+          <%= f.input :third_party_address %>
+          <%= f.input :third_party_relationship_to_client %>
+        </div>
+      </div>
+
+      <div class="col-md-8">
+        <h3>Case Information</h3>
+
+        <%= f.input :docket_number %>
+        <%= f.input :charges %>
+        <div class="row">
+          <div class="col-sm-6">
+            <%= f.input :arraignment_date, as: :date, html5: true %>
+          </div>
+          <div class="col-sm-6">
+            <%= f.input :appearance_date, as: :date, html5: true %>
+          </div>
+        </div>
+        <%= f.input :bail_amount, as: :integer, html5: true %>
+        <%= f.input :gps_required, as: :select %>
+        <%= f.input :court %>
+
+        <%= f.association :facility, collection: @facilities, prompt: :translate %>
+
+        <%= f.input :open_cases_description, as: :text %>
+        <%= f.input :warrants_description, as: :text %>
+        <%= f.input :support_person_description, as: :text %>
+        <%= f.input :released_upon_posting_description, as: :text %>
+        <%= f.input :school_description, as: :text %>
+        <%= f.input :employment_description, as: :text %>
+        <%= f.input :housing_description, as: :text %>
+        <%= f.input :history_description, as: :text %>
+        <%= f.input :additional_info_description, as: :text %>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>
