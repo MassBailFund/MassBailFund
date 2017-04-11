@@ -20,4 +20,58 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  case_detail:
+    third_party:
+      description: A 3rd person who we can contact if we cannot reach the defendant, like a family member or social worker. Please do not put attorney information here.
+  simple_form:
+    labels:
+      attorney:
+        email: Attorney Email
+        contact:
+          name: Attorney Name
+          phone: Attorney Phone Number
+        address:
+          address: Attorney Mailing Address
+      client:
+        email: Defendant Email
+        contact:
+          name: Defendant Name
+          phone: Defendant Phone Number
+        address:
+          address: Defendant Mailing Address
+      third_party:
+        relationship_to_client: Reference Relationship to Client
+        contact:
+          name: Reference Name
+          phone: Reference Phone Number
+        address:
+          address: Reference Mailing Address
+      case_detail:
+        docket_number: Docket Number
+        charges: Charges
+        arraignment_date: Date of Arraignment
+        appearance_date: Date of Appearance
+        bail_amount: Bail Amount
+        gps_required: GPS Required?
+        court: Court Where Charged
+        facility: Facility Where Held
+        open_cases_description: Does the defendant have other open cases, if so, how many and where are they?
+        warrants_description: Does the defendant have any outstanding warrants?
+        support_person_description: Was there a support person present at the defendant's arraignment?
+        released_upon_posting_description: Will the defendant be released from custody upon the posting of bail?
+        school_description: Is the defendant in school/vocational/training program?
+        employment_description: Is the defendant employed?
+        housing_description: Is the defendant homeless/precariously housed?
+        history_description: What does the defendant's history of defaulting/failing to appear look like?
+        additional_info: Please tell us why your client should receive assistance from the Bail Fund
+    hints:
+      client:
+        email: If the defendant does not have an email address, please put "n/a."
+        contact:
+          phone: If the defendant does not have a telephone number, please put "n/a."
+        address:
+          address: If the defendant does not have an address, please put "n/a."
+      case_detail:
+        facility: Please specify the jail where your client is being held. If your client is held anywhere BUT Nashua Street Jail or South Bay House of Correction, your client will need a ride from the facility before the Bail Fund can post bail. Please specify in the additional information field below who will be available to give your client a ride.
+    prompts:
+      facility: Select a facility
