@@ -3,5 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= nil
+
+    can [:new, :create], CaseDetail
   end
 end

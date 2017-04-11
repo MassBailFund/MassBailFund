@@ -26,6 +26,8 @@ gem 'cancancan'
 # Registration and sessions
 gem 'devise'
 
+gem 'simple_form'
+
 # generate entity relationship diagrams
 gem 'rails-erd', require: false, group: :erd
 
@@ -38,6 +40,7 @@ group :development, :test do
 
   gem 'rspec-its'
   gem 'rspec-rails', '~> 3.5'
+  gem 'rails-controller-testing'
 
   gem 'factory_girl_rails'
   gem 'faker'

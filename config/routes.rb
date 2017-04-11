@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  resources :case_details, only: [:new, :create]
+
   root to: 'home#index'
 end
