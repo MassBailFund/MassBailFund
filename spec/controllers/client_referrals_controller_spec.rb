@@ -1,4 +1,4 @@
-describe CaseDetailsController do
+describe ClientReferralsController do
   subject { response }
 
   describe '#new' do
