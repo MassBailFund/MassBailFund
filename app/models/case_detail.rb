@@ -8,6 +8,13 @@ class CaseDetail < ApplicationRecord
   validates :third_party, presence: true
   validates :client, presence: true
   validates :facility, presence: true
+  validates :docket_number, presence: true
+  validates :charges, presence: true
+  validates :arraignment_date, presence: true
+  validates :appearance_date, presence: true
+  validates :bail_amount, presence: true, numericality: true
+  validates :gps_required, presence: true
+  validates :court, presence: true
 
   accepts_nested_attributes_for :attorney
   accepts_nested_attributes_for :third_party

@@ -6,6 +6,7 @@ class Client < ApplicationRecord
 
   validates :address, presence: true
   validates :contact, presence: true
+  validates :email, presence: true
   validates :birth_date, presence: true
 
   accepts_nested_attributes_for :contact
