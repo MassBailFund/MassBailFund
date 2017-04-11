@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410034308) do
+ActiveRecord::Schema.define(version: 20170411191804) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "address"
@@ -56,6 +56,53 @@ ActiveRecord::Schema.define(version: 20170410034308) do
     t.index ["client_id"], name: "index_case_details_on_client_id"
     t.index ["facility_id"], name: "index_case_details_on_facility_id"
     t.index ["third_party_id"], name: "index_case_details_on_third_party_id"
+  end
+
+  create_table "client_referrals", force: :cascade do |t|
+    t.integer  "facility_id"
+    t.string   "attorney_name"
+    t.string   "attorney_email"
+    t.string   "attorney_phone"
+    t.string   "attorney_address"
+    t.string   "client_name"
+    t.string   "client_email"
+    t.string   "client_phone"
+    t.string   "client_address"
+    t.date     "client_birth_date"
+    t.string   "third_party_name"
+    t.string   "third_party_email"
+    t.string   "third_party_phone"
+    t.string   "third_party_address"
+    t.string   "third_party_relationship_to_client"
+    t.string   "docket_number"
+    t.string   "charges"
+    t.date     "arraignment_date"
+    t.date     "appearance_date"
+    t.decimal  "bail_amount"
+    t.boolean  "gps_required"
+    t.string   "court"
+    t.boolean  "has_open_cases"
+    t.string   "open_cases_description"
+    t.boolean  "has_warrants"
+    t.string   "warrants_description"
+    t.boolean  "has_support_person"
+    t.string   "support_person_description"
+    t.boolean  "released_upon_posting"
+    t.string   "released_upon_posting_description"
+    t.boolean  "has_school"
+    t.string   "school_description"
+    t.boolean  "has_employment"
+    t.string   "employment_description"
+    t.boolean  "has_housing"
+    t.string   "housing_description"
+    t.string   "history_description"
+    t.string   "additional_info_description"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["attorney_email"], name: "index_client_referrals_on_attorney_email"
+    t.index ["client_email"], name: "index_client_referrals_on_client_email"
+    t.index ["facility_id"], name: "index_client_referrals_on_facility_id"
+    t.index ["third_party_email"], name: "index_client_referrals_on_third_party_email"
   end
 
   create_table "clients", force: :cascade do |t|
