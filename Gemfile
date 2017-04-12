@@ -26,6 +26,9 @@ gem 'cancancan'
 # Registration and sessions
 gem 'devise'
 
+# Keep a record of model changes
+gem 'paper_trail'
+
 gem 'simple_form'
 
 # generate entity relationship diagrams
