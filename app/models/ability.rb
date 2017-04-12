@@ -4,6 +4,6 @@ class Ability
   def initialize(user)
     user ||= nil
 
-    can [:new, :create], CaseDetail
+    can [:new, :create], ClientReferral
   end
 end
