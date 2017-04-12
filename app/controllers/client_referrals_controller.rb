@@ -15,7 +15,7 @@ class ClientReferralsController < ApplicationController
   private
 
   def after_create_path
-    root
+    root_path
   end
 
   def create_params
@@ -53,7 +53,7 @@ class ClientReferralsController < ApplicationController
       :employment_description,
       :housing_description,
       :history_description,
-      :additional_info,
+      :additional_info_description,
     )
   end
 

@@ -9,6 +9,17 @@ describe ClientReferralsController do
   end
 
   describe '#create' do
-    pending
+    let!(:facility_id) { FactoryGirl.create(:facility).id }
+    let!(:client_referral_attributes) { FactoryGirl.attributes_for(:client_referral, facility_id: facility_id) }
+
+    def go!
+      post 'create', params: { client_referral: client_referral_attributes }
+    end
+
+    it 'creates expected ClientReferral' do
+      expect { go! }.to change{ ClientReferral.count }.by(1)
+      created_client_referral_attributes = HashWithIndifferentAccess.new(ClientReferral.last.attributes)
+      expect(created_client_referral_attributes).to include(client_referral_attributes)
+    end
   end
 end
