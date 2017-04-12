@@ -17,7 +17,7 @@ FactoryGirl.define do
     # no third_party_email { Faker::Internet.unique.email }
     third_party_phone { Faker::PhoneNumber.cell_phone }
     third_party_address { generate :address }
-    third_party_relationship_to_client { ["Family", "Friend", "Wife", "Husband", "Boyfriend", "Girlfriend"].shuffle.first }
+    third_party_relationship_to_client { %w(Family Friend Wife Husband Boyfriend Girlfriend).sample }
 
     docket_number { Faker::Number.number(8) }
     charges { Faker::Lorem.sentence }
@@ -27,14 +27,14 @@ FactoryGirl.define do
     gps_required { Faker::Boolean.boolean }
     court { Faker::Company.name }
 
-    open_cases_description "N/A"
-    warrants_description "N/A"
-    support_person_description "N/A"
-    released_upon_posting_description "N/A"
-    school_description "N/A"
-    employment_description "N/A"
-    housing_description "N/A"
-    history_description "N/A"
-    additional_info_description "N/A"
+    open_cases_description 'N/A'
+    warrants_description 'N/A'
+    support_person_description 'N/A'
+    released_upon_posting_description 'N/A'
+    school_description 'N/A'
+    employment_description 'N/A'
+    housing_description 'N/A'
+    history_description 'N/A'
+    additional_info_description 'N/A'
   end
 end

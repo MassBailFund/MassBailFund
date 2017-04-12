@@ -4,6 +4,7 @@ class ClientReferralsController < ApplicationController
   before_action :load_facilities, only: [:new, :create]
 
   def new
+    # all logic handled by load_and_authorize_resource
   end
 
   def create
@@ -53,7 +54,7 @@ class ClientReferralsController < ApplicationController
       :employment_description,
       :housing_description,
       :history_description,
-      :additional_info_description,
+      :additional_info_description
     )
   end
 

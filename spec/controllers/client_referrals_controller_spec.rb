@@ -17,7 +17,7 @@ describe ClientReferralsController do
     end
 
     it 'creates expected ClientReferral' do
-      expect { go! }.to change{ ClientReferral.count }.by(1)
+      expect { go! }.to change { ClientReferral.count }.by(1)
       created_client_referral_attributes = HashWithIndifferentAccess.new(ClientReferral.last.attributes)
       expect(created_client_referral_attributes).to include(client_referral_attributes)
     end
