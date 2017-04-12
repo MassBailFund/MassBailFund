@@ -1,2 +1,6 @@
+AllCops:
+  Excludes:
+    - 'db/*'
+    - 'db/migrate/*'
 Metrics/LineLength:
   Enabled: false
