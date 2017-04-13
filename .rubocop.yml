@@ -2,5 +2,10 @@ AllCops:
   Exclude:
     - 'db/*'
     - 'db/migrate/*'
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/factories/*'
+    - 'config/initializers/devise.rb'
+    - 'config/initializers/simple_form_bootstrap.rb'
 Metrics/LineLength:
   Enabled: false
