@@ -6,14 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 [
-'Nashua Street Jail',
-'South Bay House of Correction',
-'Middleton House of Correction',
-'Worcester County House of Correction',
-'Western Mass. Regional Women\'s Correctional Center',
-'MCI - Framingham',
-'Billerica House of Correction',
-'Plymouth County House of Correction'
+  'Nashua Street Jail',
+  'South Bay House of Correction',
+  'Middleton House of Correction',
+  'Worcester County House of Correction',
+  'Western Mass. Regional Women\'s Correctional Center',
+  'MCI - Framingham',
+  'Billerica House of Correction',
+  'Plymouth County House of Correction'
 ].each do |name|
   FactoryGirl.create(:facility, name: name)
 end

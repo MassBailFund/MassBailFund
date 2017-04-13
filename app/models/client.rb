@@ -1,3 +1,6 @@
+#
+# TODO: This class may be removed depending on the existing MBF schema
+#
 class Client < ApplicationRecord
   belongs_to :address
   belongs_to :contact

@@ -1,3 +1,6 @@
+#
+# TODO: This class may be removed depending on the existing MBF schema
+#
 class Contact < ApplicationRecord
   has_many :attorneys
   has_many :clients

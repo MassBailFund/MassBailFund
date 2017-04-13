@@ -1,3 +1,6 @@
+#
+# TODO: This class may be removed depending on the existing MBF schema
+#
 class CaseDetail < ApplicationRecord
   belongs_to :attorney
   belongs_to :third_party

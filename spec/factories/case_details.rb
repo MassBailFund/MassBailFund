@@ -11,14 +11,14 @@ FactoryGirl.define do
     bail_amount { Faker::Number.between(50, 500) }
     gps_required { Faker::Boolean.boolean }
     court { Faker::Company.name }
-    open_cases_description "N/A"
-    warrants_description "N/A"
-    support_person_description "N/A"
-    released_upon_posting_description "N/A"
-    school_description "N/A"
-    employment_description "N/A"
-    housing_description "N/A"
-    history_description "N/A"
-    additional_info "N/A"
+    open_cases_description 'N/A'
+    warrants_description 'N/A'
+    support_person_description 'N/A'
+    released_upon_posting_description 'N/A'
+    school_description 'N/A'
+    employment_description 'N/A'
+    housing_description 'N/A'
+    history_description 'N/A'
+    additional_info 'N/A'
   end
 end
