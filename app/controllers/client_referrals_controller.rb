@@ -1,3 +1,6 @@
+#
+# Public facing form to create ClientReferrals.
+#
 class ClientReferralsController < ApplicationController
   load_and_authorize_resource
 

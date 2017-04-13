@@ -1,3 +1,6 @@
+#
+# TODO: This class may be removed depending on the existing MBF schema
+#
 class ClientReferral < ApplicationRecord
   belongs_to :facility
 
