@@ -31,15 +31,14 @@ gem 'paper_trail'
 
 gem 'simple_form'
 
+gem 'mysql2'
+
 # generate entity relationship diagrams
 gem 'rails-erd', require: false, group: :erd
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
 
   gem 'rails-controller-testing'
   gem 'rspec-its'
@@ -65,7 +64,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 

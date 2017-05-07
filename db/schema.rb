@@ -12,24 +12,24 @@
 
 ActiveRecord::Schema.define(version: 20170412225744) do
 
-  create_table "addresses", force: :cascade do |t|
+  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "attorneys", force: :cascade do |t|
+  create_table "attorneys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email"
     t.integer  "address_id"
     t.integer  "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_attorneys_on_address_id"
-    t.index ["contact_id"], name: "index_attorneys_on_contact_id"
-    t.index ["email"], name: "index_attorneys_on_email", unique: true
+    t.index ["address_id"], name: "index_attorneys_on_address_id", using: :btree
+    t.index ["contact_id"], name: "index_attorneys_on_contact_id", using: :btree
+    t.index ["email"], name: "index_attorneys_on_email", unique: true, using: :btree
   end
 
-  create_table "case_details", force: :cascade do |t|
+  create_table "case_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "attorney_id"
     t.integer  "third_party_id"
     t.integer  "client_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170412225744) do
     t.string   "charges"
     t.date     "arraignment_date"
     t.date     "appearance_date"
-    t.decimal  "bail_amount"
+    t.decimal  "bail_amount",                       precision: 10
     t.boolean  "gps_required"
     t.string   "court"
     t.string   "open_cases_description"
@@ -50,15 +50,15 @@ ActiveRecord::Schema.define(version: 20170412225744) do
     t.string   "housing_description"
     t.string   "history_description"
     t.string   "additional_info"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.index ["attorney_id"], name: "index_case_details_on_attorney_id"
-    t.index ["client_id"], name: "index_case_details_on_client_id"
-    t.index ["facility_id"], name: "index_case_details_on_facility_id"
-    t.index ["third_party_id"], name: "index_case_details_on_third_party_id"
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.index ["attorney_id"], name: "index_case_details_on_attorney_id", using: :btree
+    t.index ["client_id"], name: "index_case_details_on_client_id", using: :btree
+    t.index ["facility_id"], name: "index_case_details_on_facility_id", using: :btree
+    t.index ["third_party_id"], name: "index_case_details_on_third_party_id", using: :btree
   end
 
-  create_table "client_referrals", force: :cascade do |t|
+  create_table "client_referrals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "facility_id"
     t.string   "attorney_name"
     t.string   "attorney_email"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 20170412225744) do
     t.string   "charges"
     t.date     "arraignment_date"
     t.date     "appearance_date"
-    t.decimal  "bail_amount"
+    t.decimal  "bail_amount",                        precision: 10
     t.boolean  "gps_required"
     t.string   "court"
     t.boolean  "has_open_cases"
@@ -97,50 +97,50 @@ ActiveRecord::Schema.define(version: 20170412225744) do
     t.string   "housing_description"
     t.string   "history_description"
     t.string   "additional_info_description"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
-    t.index ["attorney_email"], name: "index_client_referrals_on_attorney_email"
-    t.index ["client_email"], name: "index_client_referrals_on_client_email"
-    t.index ["facility_id"], name: "index_client_referrals_on_facility_id"
-    t.index ["third_party_email"], name: "index_client_referrals_on_third_party_email"
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.index ["attorney_email"], name: "index_client_referrals_on_attorney_email", using: :btree
+    t.index ["client_email"], name: "index_client_referrals_on_client_email", using: :btree
+    t.index ["facility_id"], name: "index_client_referrals_on_facility_id", using: :btree
+    t.index ["third_party_email"], name: "index_client_referrals_on_third_party_email", using: :btree
   end
 
-  create_table "clients", force: :cascade do |t|
+  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email"
     t.date     "birth_date"
     t.integer  "address_id"
     t.integer  "contact_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_clients_on_address_id"
-    t.index ["contact_id"], name: "index_clients_on_contact_id"
+    t.index ["address_id"], name: "index_clients_on_address_id", using: :btree
+    t.index ["contact_id"], name: "index_clients_on_contact_id", using: :btree
   end
 
-  create_table "contacts", force: :cascade do |t|
+  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "facilities", force: :cascade do |t|
+  create_table "facilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_facilities_on_name", unique: true
+    t.index ["name"], name: "index_facilities_on_name", unique: true, using: :btree
   end
 
-  create_table "third_parties", force: :cascade do |t|
+  create_table "third_parties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "relationship_to_client"
     t.integer  "address_id"
     t.integer  "contact_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.index ["address_id"], name: "index_third_parties_on_address_id"
-    t.index ["contact_id"], name: "index_third_parties_on_contact_id"
+    t.index ["address_id"], name: "index_third_parties_on_address_id", using: :btree
+    t.index ["contact_id"], name: "index_third_parties_on_contact_id", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -160,20 +160,31 @@ ActiveRecord::Schema.define(version: 20170412225744) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+    t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
   end
 
-  create_table "versions", force: :cascade do |t|
-    t.string   "item_type",                     null: false
+  create_table "versions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
+    t.string   "item_type",  limit: 191,        null: false
     t.integer  "item_id",                       null: false
     t.string   "event",                         null: false
     t.string   "whodunnit"
-    t.text     "object",     limit: 1073741823
+    t.text     "object",     limit: 4294967295
     t.datetime "created_at"
-    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
 
+  add_foreign_key "attorneys", "addresses"
+  add_foreign_key "attorneys", "contacts"
+  add_foreign_key "case_details", "attorneys"
+  add_foreign_key "case_details", "clients"
+  add_foreign_key "case_details", "facilities"
+  add_foreign_key "case_details", "third_parties"
+  add_foreign_key "client_referrals", "facilities"
+  add_foreign_key "clients", "addresses"
+  add_foreign_key "clients", "contacts"
+  add_foreign_key "third_parties", "addresses"
+  add_foreign_key "third_parties", "contacts"
 end
