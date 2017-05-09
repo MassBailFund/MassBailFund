@@ -12,8 +12,8 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <% if can? :new, ClientReferral %>
-          <li><%= link_to t('navbar.new_case_referral'), new_client_referral_path %></li>
+        <% if can? :new, Client %>
+          <li><%= link_to t('navbar.new_client'), new_client_path %></li>
         <% end %>
       </ul>
     </div>

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :client_referrals, only: [:new, :create]
+  resources :clients, only: [:new, :create]
 
   root to: 'home#index'
 end

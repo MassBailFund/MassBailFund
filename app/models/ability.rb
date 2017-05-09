@@ -7,6 +7,6 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    can [:new, :create], ClientReferral
+    can [:new, :create], Client
   end
 end
