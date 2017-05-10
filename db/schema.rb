@@ -10,117 +10,77 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170412225744) do
+ActiveRecord::Schema.define(version: 20170507015636) do
 
-  create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "ATTACHMENTS", primary_key: "ATTACHMENT_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
+    t.integer "CLIENT_ID"
+    t.string  "FILENAME"
+    t.binary  "ATTACHMENT", limit: 65535
   end
 
-  create_table "attorneys", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email"
-    t.integer  "address_id"
-    t.integer  "contact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_attorneys_on_address_id", using: :btree
-    t.index ["contact_id"], name: "index_attorneys_on_contact_id", using: :btree
-    t.index ["email"], name: "index_attorneys_on_email", unique: true, using: :btree
+  create_table "BAIL_STATUSES", primary_key: "BAIL_STATUS_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
+    t.string "BAIL_STATUS", limit: 100
   end
 
-  create_table "case_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "attorney_id"
-    t.integer  "third_party_id"
-    t.integer  "client_id"
-    t.integer  "facility_id"
-    t.string   "docket_number"
-    t.string   "charges"
-    t.date     "arraignment_date"
-    t.date     "appearance_date"
-    t.decimal  "bail_amount",                       precision: 10
-    t.boolean  "gps_required"
-    t.string   "court"
-    t.string   "open_cases_description"
-    t.string   "warrants_description"
-    t.string   "support_person_description"
-    t.string   "released_upon_posting_description"
-    t.string   "school_description"
-    t.string   "employment_description"
-    t.string   "housing_description"
-    t.string   "history_description"
-    t.string   "additional_info"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
-    t.index ["attorney_id"], name: "index_case_details_on_attorney_id", using: :btree
-    t.index ["client_id"], name: "index_case_details_on_client_id", using: :btree
-    t.index ["facility_id"], name: "index_case_details_on_facility_id", using: :btree
-    t.index ["third_party_id"], name: "index_case_details_on_third_party_id", using: :btree
+  create_table "CASE_STATUSES", primary_key: "CASE_STATUS_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
+    t.string "CASE_STATUS", limit: 100
   end
 
-  create_table "client_referrals", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "facility_id"
-    t.string   "attorney_name"
-    t.string   "attorney_email"
-    t.string   "attorney_phone"
-    t.string   "attorney_address"
-    t.string   "client_name"
-    t.string   "client_email"
-    t.string   "client_phone"
-    t.string   "client_address"
-    t.date     "client_birth_date"
-    t.string   "third_party_name"
-    t.string   "third_party_email"
-    t.string   "third_party_phone"
-    t.string   "third_party_address"
-    t.string   "third_party_relationship_to_client"
-    t.string   "docket_number"
-    t.string   "charges"
-    t.date     "arraignment_date"
-    t.date     "appearance_date"
-    t.decimal  "bail_amount",                        precision: 10
-    t.boolean  "gps_required"
-    t.string   "court"
-    t.boolean  "has_open_cases"
-    t.string   "open_cases_description"
-    t.boolean  "has_warrants"
-    t.string   "warrants_description"
-    t.boolean  "has_support_person"
-    t.string   "support_person_description"
-    t.boolean  "released_upon_posting"
-    t.string   "released_upon_posting_description"
-    t.boolean  "has_school"
-    t.string   "school_description"
-    t.boolean  "has_employment"
-    t.string   "employment_description"
-    t.boolean  "has_housing"
-    t.string   "housing_description"
-    t.string   "history_description"
-    t.string   "additional_info_description"
-    t.datetime "created_at",                                        null: false
-    t.datetime "updated_at",                                        null: false
-    t.index ["attorney_email"], name: "index_client_referrals_on_attorney_email", using: :btree
-    t.index ["client_email"], name: "index_client_referrals_on_client_email", using: :btree
-    t.index ["facility_id"], name: "index_client_referrals_on_facility_id", using: :btree
-    t.index ["third_party_email"], name: "index_client_referrals_on_third_party_email", using: :btree
+  create_table "CLIENTS", primary_key: "CLIENT_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
+    t.string   "NOTES",                  limit: 4000
+    t.integer  "SCORE"
+    t.integer  "REQUEST_STATUS_ID",                    default: 1
+    t.integer  "BAIL_STATUS_ID",                       default: 1
+    t.string   "DATE_RETURNED"
+    t.string   "FUNDS_WITHDRAWAL_DATE"
+    t.string   "ATTORNEY_FEE_STATUS"
+    t.integer  "CASE_STATUS_ID",                       default: 1
+    t.string   "CASE_DISPOSITION_DATE"
+    t.string   "CASE_DISPOSITION"
+    t.string   "BAILED_DATE"
+    t.integer  "AMOUNT_POSTED"
+    t.boolean  "POOLED"
+    t.string   "POOLED_BY",              limit: 32
+    t.integer  "COMMISSIONERS_FEE"
+    t.datetime "TIME_STAMP"
+    t.string   "ATTORNEY_NAME"
+    t.string   "ATTORNEY_EMAIL",         limit: 100
+    t.string   "ATTORNEY_PHONE",         limit: 100
+    t.string   "ATTORNEY_ADDRESS"
+    t.string   "CLIENT_NAME"
+    t.string   "CLIENT_EMAIL",           limit: 100
+    t.string   "CLIENT_PHONE",           limit: 100
+    t.string   "CLIENT_ADDRESS"
+    t.string   "CLIENT_DOB"
+    t.string   "REFERENCE_NAME"
+    t.string   "REFERENCE_RELATIONSHIP", limit: 100
+    t.string   "REFERENCE_PHONE",        limit: 100
+    t.string   "REFERENCE_ADDRESS"
+    t.string   "DOCKET",                 limit: 100
+    t.string   "CHARGES"
+    t.string   "ARRAIGNMENT_DATE"
+    t.string   "APPEARANCE_DATE"
+    t.text     "BAIL_AMOUNT",            limit: 65535
+    t.boolean  "GPS_REQUIRED"
+    t.string   "COURT",                  limit: 100
+    t.string   "FACILITY",               limit: 100
+    t.string   "WARRANTS"
+    t.string   "RELEASED_UPON_POSTING",  limit: 1000
+    t.string   "SUPPORT_PERSON",         limit: 1000
+    t.string   "OPEN_CASES",             limit: 1000
+    t.string   "SCHOOL",                 limit: 1000
+    t.string   "EMPLOYMENT",             limit: 1000
+    t.string   "HOUSING",                limit: 1000
+    t.string   "HISTORY",                limit: 1000
+    t.string   "ADDITIONAL_INFO",        limit: 4000
+    t.string   "SURETY_NAME"
+    t.string   "BAIL_SLIP"
+    t.string   "CLIENT_CODE",            limit: 32
+    t.string   "DATE_STRING",            limit: 32
   end
 
-  create_table "clients", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email"
-    t.date     "birth_date"
-    t.integer  "address_id"
-    t.integer  "contact_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_clients_on_address_id", using: :btree
-    t.index ["contact_id"], name: "index_clients_on_contact_id", using: :btree
-  end
-
-  create_table "contacts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name"
-    t.string   "phone"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "REQUEST_STATUSES", primary_key: "REQUEST_STATUS_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
+    t.string "REQUEST_STATUS", limit: 100
   end
 
   create_table "facilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -128,16 +88,6 @@ ActiveRecord::Schema.define(version: 20170412225744) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_facilities_on_name", unique: true, using: :btree
-  end
-
-  create_table "third_parties", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "relationship_to_client"
-    t.integer  "address_id"
-    t.integer  "contact_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["address_id"], name: "index_third_parties_on_address_id", using: :btree
-    t.index ["contact_id"], name: "index_third_parties_on_contact_id", using: :btree
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -176,15 +126,4 @@ ActiveRecord::Schema.define(version: 20170412225744) do
     t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
 
-  add_foreign_key "attorneys", "addresses"
-  add_foreign_key "attorneys", "contacts"
-  add_foreign_key "case_details", "attorneys"
-  add_foreign_key "case_details", "clients"
-  add_foreign_key "case_details", "facilities"
-  add_foreign_key "case_details", "third_parties"
-  add_foreign_key "client_referrals", "facilities"
-  add_foreign_key "clients", "addresses"
-  add_foreign_key "clients", "contacts"
-  add_foreign_key "third_parties", "addresses"
-  add_foreign_key "third_parties", "contacts"
 end

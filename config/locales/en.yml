@@ -24,12 +24,12 @@ en:
   navbar:
     new_case_referral: Referral
   case_detail:
-    third_party:
+    reference:
       description: A 3rd person who we can contact if we cannot reach the defendant, like a family member or social worker. Please do not put attorney information here.
   simple_form:
     labels:
-      client_referral:
-        attorney_eamil: Attorney Email
+      client:
+        attorney_email: Attorney Email
         attorney_name: Attorney Name
         attorney_phone: Attorney Phone Number
         attorney_address: Attorney Mailing Address
@@ -37,11 +37,12 @@ en:
         client_name: Defendant Name
         client_phone: Defendant Phone Number
         client_address: Defendant Mailing Address
-        third_party_name: Reference Name
-        third_party_phone: Reference Phone Number
-        third_party_address: Reference Mailing Address
-        third_party_relationship_to_client: Reference Relationship to Client
-        docket_number: Docket Number
+        client_dob: Defendant Birth Date
+        reference_name: Reference Name
+        reference_phone: Reference Phone Number
+        reference_address: Reference Mailing Address
+        reference_relationship: Reference Relationship to Client
+        docket: Docket Number
         charges: Charges
         arraignment_date: Date of Arraignment
         appearance_date: Date of Appearance
@@ -49,21 +50,22 @@ en:
         gps_required: GPS Required?
         court: Court Where Charged
         facility: Facility Where Held
-        open_cases_description: Does the defendant have other open cases, if so, how many and where are they?
-        warrants_description: Does the defendant have any outstanding warrants?
-        support_person_description: Was there a support person present at the defendant's arraignment?
-        released_upon_posting_description: Will the defendant be released from custody upon the posting of bail?
-        school_description: Is the defendant in school/vocational/training program?
-        employment_description: Is the defendant employed?
-        housing_description: Is the defendant homeless/precariously housed?
-        history_description: What does the defendant's history of defaulting/failing to appear look like?
-        additional_info_description: Please tell us why your client should receive assistance from the Bail Fund
+        open_cases: Does the defendant have other open cases, if so, how many and where are they?
+        warrants: Does the defendant have any outstanding warrants?
+        support_person: Was there a support person present at the defendant's arraignment?
+        released_upon_posting: Will the defendant be released from custody upon the posting of bail?
+        school: Is the defendant in school/vocational/training program?
+        employment: Is the defendant employed?
+        housing: Is the defendant homeless/precariously housed?
+        history: What does the defendant's history of defaulting/failing to appear look like?
+        additional_info: Please tell us why your client should receive assistance from the Bail Fund
     hints:
-      client_referral:
+      client:
         client_email: If the defendant does not have an email address, please put "n/a"
         client_phone: If the defendant does not have a telephone number, please put "n/a"
         client_address: If the defendant does not have an address, please put "n/a"
-        third_party_relationship_to_client: For example "Mother", or "Boyfriend"
+        reference_relationship: For example "Mother", or "Boyfriend"
         facility: Please specify the jail where your client is being held. If your client is held anywhere BUT Nashua Street Jail or South Bay House of Correction, your client will need a ride from the facility before the Bail Fund can post bail. Please specify in the additional information field below who will be available to give your client a ride.
     prompts:
-      facility: Select a facility
+      client:
+        facility: Select a facility

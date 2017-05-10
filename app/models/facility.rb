@@ -3,7 +3,5 @@
 # Currently they are created by the db/seeds.rb file.
 #
 class Facility < ApplicationRecord
-  has_many :case_details
-
   validates :name, presence: true, uniqueness: true
 end
