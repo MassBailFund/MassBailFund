@@ -1,0 +1,36 @@
+<div class="modal fade" id="editNotes" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= simple_form_for [:admin, @client], html: { class: 'form-horizontal', role: 'form', id: 'update_client' } do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Details</h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel-body">
+            <%= f.input :open_cases, as: :text %>
+
+            <%= f.input :warrants, as: :text %>
+
+            <%= f.input :support_person, as: :text %>
+
+            <%= f.input :released_upon_posting, as: :text %>
+
+            <%= f.input :school, as: :text %>
+
+            <%= f.input :employment, as: :text %>
+
+            <%= f.input :housing, as: :text %>
+
+            <%= f.input :history, as: :text %>
+
+            <%= f.input :additional_info, as: :text %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit 'Save', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

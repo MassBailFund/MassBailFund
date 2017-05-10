@@ -1,13 +1,14 @@
 class Client < ApplicationRecord
   include DowncaseAttributes
 
-  belongs_to :request_status, foreign_key: :request_status_id
-  belongs_to :bail_status, foreign_key: :bail_status_id
-  belongs_to :case_status, foreign_key: :case_status_id
+  belongs_to :request_status, foreign_key: :REQUEST_STATUS_ID
+  belongs_to :bail_status, foreign_key: :BAIL_STATUS_ID
+  belongs_to :case_status, foreign_key: :CASE_STATUS_ID
   has_one :attachment, inverse_of: :client
 
   default_scope -> { includes(:request_status, :bail_status, :case_status) }
 
+  scope :open, -> { where(request_statuses: {request_status: ['New','In Process', 'Approved', 'On Hold']}) }
   scope :closed, -> { where(bail_statuses: {bail_status: ['Ready for Pickup', 'Returned', 'Outstanding Fee']}) }
   scope :dismissed, -> { closed.where("case_disposition LIKE ('%DISMISSED%')") }
   scope :not_dismissed, -> { closed.where("case_disposition NOT LIKE ('%DISMISSED%')") }

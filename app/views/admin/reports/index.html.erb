@@ -1,0 +1,18 @@
+<h3>Dismissed Cases</h3>
+<p>There are <%= link_to "#{@total_dismissed_clients} dismissed cases of #{@total_closed_clients}", admin_clients_path(scope: 'dismissed') %> total closed cases.</p>
+
+<h3>Requests by Month</h3>
+
+<p>TODO View all requests sorted by month.</p>
+
+<h3>Open Requests by Court</h3>
+
+<p>View <%= link_to 'all open requests sorted by court', admin_clients_path(order: 'court', scope: 'open') %>.</p>
+
+<h3>Commissioners' Fees</h3>
+
+<p>The commissioners' fee total is <%= number_to_currency @total_comissioners_fees %>.</p>
+
+<h3>Sureties by Person</h3>
+
+<p>View <%= link_to 'surety totals by person', sureties_admin_reports_path %>.</p>

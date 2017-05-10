@@ -1,0 +1,18 @@
+<div class="modal fade" id="addAttachment" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= simple_form_for [:admin, @client], html: { class: 'form-horizontal', role: 'form', id: 'update_client' } do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add an Attachment</h4>
+        </div>
+        <div class="modal-body">
+          TODO
+        </div>
+        <div class="modal-footer">
+          <%= f.submit 'Upload', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

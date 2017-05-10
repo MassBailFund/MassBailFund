@@ -15,6 +15,15 @@
         <% if can? :new, Client %>
           <li><%= link_to t('navbar.new_client'), new_client_path %></li>
         <% end %>
+        <% if can? :index, Client %>
+          <li><%= link_to t('navbar.index_client_scope_open'), admin_clients_path(scope: 'open') %></li>
+        <% end %>
+        <% if can? :index, Client %>
+          <li><%= link_to t('navbar.index_client'), admin_clients_path %></li>
+        <% end %>
+        <% if can? :index, :reports %>
+          <li><%= link_to t('navbar.index_reports'), admin_reports_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>

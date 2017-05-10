@@ -1,0 +1,178 @@
+<div class="container">
+  <%= simple_form_for [:admin, @client], html: { class: 'form-horizontal', role: 'form', id: 'update_client' } do |f| %>
+    <!-- Title -->
+    <div class="row">
+      <div class="col-lg-6">
+        <h4 class="col-md-offset-3 col-md-9" style="white-space: nowrap"><%= @client.client_name %> - <%= @client.bail_amount %>, <%= @client.facility %></h4>
+      </div>
+      <div class="col-lg-6">
+        <div class="pull-right">
+          <% if can? :destroy, @client %>
+            <%= link_to 'Delete', admin_client_path(@client), class: 'btn btn-danger', method: :delete, 'data-confirm': 'Are you sure you want to delete this request?' %>
+          <% end %>
+          <% if can? :update, @client %>
+            <input class="btn btn-primary" type="submit" name="save" value="Save">
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-6">
+        <%= f.input :request_status_id, as: :select, collection: @request_statuses, wrapper: :horizontal_form %>
+
+        <%= f.input :score, wrapper: :horizontal_form %>
+
+        <%= f.input :bail_status_id, as: :select, collection: @bail_statuses, wrapper: :horizontal_form %>
+
+        <%= f.input :amount_posted, as: :currency, wrapper: :horizontal_currency_input %>
+
+        <%= f.input :bailed_date, wrapper: :horizontal_form %>
+
+        <%= f.input :funds_withdrawal_date, wrapper: :horizontal_form %>
+
+        <%= f.input :commissioners_fee, as: :currency, wrapper: :horizontal_currency_input %>
+
+        <%= f.input :surety_name, wrapper: :horizontal_form %>
+
+        <%= f.input :pooled, as: :select, wrapper: :horizontal_form %>
+
+        <%= f.input :pooled_by, wrapper: :horizontal_form %>
+
+        <%= f.input :case_status_id, as: :select, collection: @case_statuses, wrapper: :horizontal_form %>
+
+        <%= f.input :case_disposition, wrapper: :horizontal_form %>
+
+        <%= f.input :case_disposition_date, wrapper: :horizontal_form %>
+
+        <div class="form-group">
+          <%= f.label :notes, class: 'control-label col-md-3' %>
+          <div class="col-md-9">
+            <%= f.input_field :notes, as: :text, class: 'form-control', rows: 6 %>
+          </div>
+        </div>
+
+        <%= f.input :date_returned, wrapper: :horizontal_form %>
+
+        <%= f.input :attorney_fee_status, wrapper: :horizontal_form %>
+
+        <div class="form-group">
+          <label class="control-label col-md-3">Attachments</label>
+          <div class="col-md-9">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#addAttachment">Add</button>
+                <% if @client.attachment.present? %>
+                  <%= link_to @client.attachment.filename, admin_attachment_path(@client.attachment), target: :blank %>
+                <% else %>
+                  <em>No attachment</em>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <!-- Right Side -->
+    <div class="col-lg-6">
+      <!-- Attorney Information -->
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            Attorney
+            <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#editAttorney">Edit</button>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <%= @client.attorney_name %> (<%= @client.attorney_email %>)<br/>
+          <%= @client.attorney_address %><br/>
+          <abbr title="Phone">P:</abbr> <%= @client.attorney_phone %>
+      </div>
+    </div>
+
+    <!-- Client Information -->
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          Client
+          <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#editClient">Edit</button>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <%= @client.client_name %> (<%= @client.client_email %>)<br/>
+        <%= @client.client_address %><br/>
+        <abbr title="Phone">P:</abbr> <%= @client.client_phone %><br/>
+        <abbr title="Date of Birth">DOB:</abbr> <%= @client.client_dob %><br/>
+        Reference: <%= @client.reference_name %> (<% @client.reference_relationship %>), <% @client.reference_address %>, <%= @client.reference_phone %>
+    </div>
+  </div>
+
+  <!-- Case Information -->
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Case
+        <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#editCase">Edit</button>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <dl class="dl-horizontal">
+        <dt>Bail Amount</dt>
+        <dd>$<%= @client.bail_amount %><%# TODO use number_to_currency when bail_amount becomes numeric %></dd>
+        <dt>Docket</dt>
+        <dd><%= @client.docket %></dd>
+        <dt>Charges</dt>
+        <dd><%= @client.charges %></dd>
+        <dt>Arraignment Date</dt>
+        <dd><%= @client.arraignment_date %></dd>
+        <dt>Next Appearance Date</dt>
+        <dd><%= @client.appearance_date %></dd>
+        <dt>GPS Required</dt>
+        <dd><%= @client.gps_required %></dd>
+        <dt>Court Where Charged</dt>
+        <dd><%= @client.court %></dd>
+        <dt>Facility Where Held</dt>
+        <dd><%= @client.facility %></dd>
+      </dt>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">
+        Details
+        <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#editNotes">Edit</button>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <dl class="dl-horizontal">
+        <dt>Other open cases?</dt>
+        <dd><%= @client.open_cases %></dd>
+        <dt>Outstanding warrants?</dt>
+        <dd><%= @client.warrants %></dd>
+        <dt>Released upon posting?</dt>
+        <dd><%= @client.released_upon_posting %></dd>
+        <dt>In school?</dt>
+        <dd><%= @client.school %></dd>
+        <dt>Employed?</dt>
+        <dd><%= @client.employment %></dd>
+        <dt>Homeless/precariously housed?</dt>
+        <dd><%= @client.housing %></dd>
+        <dt>History of default?</dt>
+        <dd><%= @client.history %></dd>
+        <dt>Support person?</dt>
+        <dd><%= @client.support_person %></dd>
+        <dt>Additional info?</dt>
+        <dd><%= @client.additional_info %></dd>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<!-- Dialogs -->
+<%= render partial: 'edit_attorney_modal' %>
+<%= render partial: 'edit_client_modal' %>
+<%= render partial: 'edit_case_modal' %>
+<%= render partial: 'edit_details_modal' %>
+<%= render partial: 'edit_attachment_modal' %>

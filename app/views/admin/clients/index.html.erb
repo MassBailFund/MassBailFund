@@ -1,0 +1,63 @@
+<% if params[:order] == 'court' %>
+  <table class='table table-hover listing'>
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Status</th>
+        <th>Bail Status</th>
+        <th>Bail Amount</th>
+        <th>Facility</th>
+        <th>Docket</th>
+        <th>Court</th>
+      </tr>
+    </thead>
+    <body>
+      <% @clients.each do |client| %>
+        <tr id='client_<% client.id %>' onclick="<%= "location.href='#{admin_client_path(client)}'" %>">
+          <td><%= link_to client.client_name, admin_client_path(client) %></td>
+          <td><%= client.request_status_type %></td>
+          <td><%= client.bail_status_type %></td>
+          <td><%= client.bail_amount %></td>
+          <td><%= client.facility %></td>
+          <td><%= client.docket %></td>
+          <td><%= client.court %></td>
+        </tr>
+      <% end %>
+    </body>
+  </table>
+<% else %>
+  <table class='table table-hover listing'>
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Status</th>
+        <th>Bail Status</th>
+        <th>Bail Amount</th>
+        <th>Date Posted</th>
+        <th>Date Returned</th>
+        <th>Facility</th>
+        <th>Surety</th>
+        <th>GPS?</th>
+        <th>Attorney</th>
+        <th>Date of Request</th>
+      </tr>
+    </thead>
+    <body>
+      <% @clients.each do |client| %>
+        <tr id='client_<% client.id %>' onclick="<%= "location.href='#{admin_client_path(client)}'" %>">
+          <td><%= link_to client.client_name, admin_client_path(client) %></td>
+          <td><%= client.request_status_type %></td>
+          <td><%= client.bail_status_type %></td>
+          <td><%= client.bail_amount %></td>
+          <td><%= client.funds_withdrawal_date unless client.funds_withdrawal_date == '0000-00-00' %></td>
+          <td><%= client.date_returned %></td>
+          <td><%= client.facility %></td>
+          <td><%= client.surety_name %></td>
+          <td><%= client.gps_required %></td>
+          <td><%= client.attorney_name %></td>
+          <td><%= client.time_stamp&.strftime('%b %d %Y %I:%M %p') %></td></tr>
+        </tr>
+      <% end %>
+    </body>
+  </table>
+<% end %>
