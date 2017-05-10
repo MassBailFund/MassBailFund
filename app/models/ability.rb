@@ -8,5 +8,10 @@ class Ability
 
   def initialize(user)
     can [:new, :create], Client
+
+    if user.present?
+      # This should be admin only
+      can :manage, :all
+    end
   end
 end
