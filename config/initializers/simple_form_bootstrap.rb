@@ -70,6 +70,25 @@ SimpleForm.setup do |config|
     end
   end
 
+  config.wrappers :horizontal_currency_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :minlength
+    b.optional :pattern
+    b.optional :min_max
+    b.optional :readonly
+    b.use :label, class: 'col-sm-3 control-label'
+
+    b.wrapper tag: 'div', class: 'col-sm-9' do |b1|
+      b1.wrapper tag: 'div', class: 'input-group' do |b2|
+        b2.use :input, class: 'form-control'
+        b2.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+        b2.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+      end
+    end
+  end
+
   config.wrappers :horizontal_file_input, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
     b.use :html5
     b.use :placeholder
