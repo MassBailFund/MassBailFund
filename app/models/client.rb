@@ -8,6 +8,7 @@ class Client < ApplicationRecord
 
   default_scope -> { includes(:request_status, :bail_status, :case_status) }
 
+  scope :open, -> { where(request_statuses: {request_status: ['New','In Process', 'Approved', 'On Hold']}) }
   scope :closed, -> { where(bail_statuses: {bail_status: ['Ready for Pickup', 'Returned', 'Outstanding Fee']}) }
   scope :dismissed, -> { closed.where("case_disposition LIKE ('%DISMISSED%')") }
   scope :not_dismissed, -> { closed.where("case_disposition NOT LIKE ('%DISMISSED%')") }
