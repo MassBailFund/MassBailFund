@@ -22,7 +22,10 @@
 en:
   title: Mass Bail Fund
   navbar:
-    new_case_referral: Referral
+    new_client: Referral
+    index_client: All Requests
+    index_client_scope_open: Open Requests
+    index_reports: Reports
   case_detail:
     reference:
       description: A 3rd person who we can contact if we cannot reach the defendant, like a family member or social worker. Please do not put attorney information here.
