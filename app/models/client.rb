@@ -1,9 +1,9 @@
 class Client < ApplicationRecord
   include DowncaseAttributes
 
-  belongs_to :request_status, foreign_key: :request_status_id
-  belongs_to :bail_status, foreign_key: :bail_status_id
-  belongs_to :case_status, foreign_key: :case_status_id
+  belongs_to :request_status, foreign_key: :REQUEST_STATUS_ID
+  belongs_to :bail_status, foreign_key: :BAIL_STATUS_ID
+  belongs_to :case_status, foreign_key: :CASE_STATUS_ID
   has_one :attachment, inverse_of: :client
 
   default_scope -> { includes(:request_status, :bail_status, :case_status) }
