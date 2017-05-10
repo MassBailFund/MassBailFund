@@ -4,6 +4,7 @@ class Client < ApplicationRecord
   belongs_to :request_status, foreign_key: :request_status_id
   belongs_to :bail_status, foreign_key: :bail_status_id
   belongs_to :case_status, foreign_key: :case_status_id
+  has_one :attachment, inverse_of: :client
 
   default_scope -> { includes(:request_status, :bail_status, :case_status) }
 
