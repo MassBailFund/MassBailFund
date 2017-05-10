@@ -1,0 +1,21 @@
+<div class="modal fade" id="editAttorney" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= simple_form_for [:admin, @client], html: { class: 'form-horizontal', role: 'form', id: 'update_client' } do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Attorney Information</h4>
+        </div>
+        <div class="modal-body">
+          <%= f.input :attorney_name, wrapper: :horizontal_form %>
+          <%= f.input :attorney_email, wrapper: :horizontal_form %>
+          <%= f.input :attorney_phone, wrapper: :horizontal_form %>
+          <%= f.input :attorney_address, wrapper: :horizontal_form %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit 'Update Attorney', class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

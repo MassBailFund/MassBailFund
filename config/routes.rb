@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :clients, only: [:new, :create]
 
   namespace :admin do
+    resources :clients, except: [:new, :create]
     resources :attachments, only: :show
   end
 
