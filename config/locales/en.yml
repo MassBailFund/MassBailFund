@@ -62,6 +62,17 @@ en:
         housing: Is the defendant homeless/precariously housed?
         history: What does the defendant's history of defaulting/failing to appear look like?
         additional_info: Please tell us why your client should receive assistance from the Bail Fund
+        amount_posted: Amount Posted
+        bail_status_id: Bail Status
+        bailed_date: Date Posted
+        date_returned: Date Returned
+        funds_withdrawal_date: Date Funds Withdrawn
+        commissioners_fee: Commissioner's Fee
+        surety_name: Surety
+        attorney_fee_status: Att'y Fee Status
+        pooled: Pooled
+        pooled_by: Pooled With
+        case_status_id: Case Status
     hints:
       client:
         client_email: If the defendant does not have an email address, please put "n/a"
@@ -69,6 +80,12 @@ en:
         client_address: If the defendant does not have an address, please put "n/a"
         reference_relationship: For example "Mother", or "Boyfriend"
         facility: Please specify the jail where your client is being held. If your client is held anywhere BUT Nashua Street Jail or South Bay House of Correction, your client will need a ride from the facility before the Bail Fund can post bail. Please specify in the additional information field below who will be available to give your client a ride.
+    placeholders:
+      client:
+        date_returned: MM/DD/YYYY
+        funds_withdrawal_date: MM/DD/YYYY
+        case_disposition_date: MM/DD/YYYY
+        surety_name: Enter name of surety
     prompts:
       client:
         facility: Select a facility
