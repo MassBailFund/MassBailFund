@@ -22,6 +22,5 @@ test:
   database: mass_bail_fund_test
 
 production:
-  production:
-    url: <%= ENV['DATABASE_URL'] %>
+  url: <%= ENV['DATABASE_URL'] %>
   # specify ENV['DATABASE_URL'] to set the database connection details in production
