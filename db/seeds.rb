@@ -5,15 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-[
-  'Nashua Street Jail',
-  'South Bay House of Correction',
-  'Middleton House of Correction',
-  'Worcester County House of Correction',
-  'Western Mass. Regional Women\'s Correctional Center',
-  'MCI - Framingham',
-  'Billerica House of Correction',
-  'Plymouth County House of Correction'
-].each do |name|
-  FactoryGirl.create(:facility, name: name)
-end
+
+User.create!([
+  {email: "alla@test.com", password: ENV["MA_BAIL_USER_PASSWORD"], password_confirmation: ENV["MA_BAIL_USER_PASSWORD"],
+    reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil,
+    sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10",
+    current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc}
+])
