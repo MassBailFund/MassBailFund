@@ -31,7 +31,7 @@ gem 'paper_trail'
 
 gem 'simple_form'
 
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.18'
 
 # generate entity relationship diagrams
 gem 'rails-erd', require: false, group: :erd
