@@ -30,7 +30,8 @@ gem 'devise'
 gem 'paper_trail'
 
 gem 'simple_form'
-
+#Per this post, the version matters for Heroku deployment
+# https://medium.com/@emersonthis/running-rails-with-mysql-on-heroku-4765df033428
 gem 'mysql2', '~> 0.3.18'
 
 # generate entity relationship diagrams
