@@ -2,12 +2,13 @@
 # Public facing form to create Clients.
 #
 class ClientsController < ApplicationController
-  load_and_authorize_resource
+  load_resource
+  skip_authorization_check
 
   before_action :load_facilities, only: [:new, :create]
 
   def new
-    # all logic handled by load_and_authorize_resource
+
   end
 
   def create
@@ -17,6 +18,7 @@ class ClientsController < ApplicationController
   private
 
   def after_create_path
+    flash[:notice] = t('user_feedback.success')
     root_path
   end
 
