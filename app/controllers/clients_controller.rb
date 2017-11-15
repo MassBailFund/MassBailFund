@@ -2,8 +2,7 @@
 # Public facing form to create Clients.
 #
 class ClientsController < ApplicationController
-  load_resource
-  skip_authorization_check
+  load_and_authorize_resource
 
   before_action :load_facilities, only: [:new, :create]
 
