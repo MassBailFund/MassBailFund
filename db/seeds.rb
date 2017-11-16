@@ -37,6 +37,11 @@ BailStatus.create!([
   {bail_status: 'Warrant'}
   ])
 
+CaseStatus.create!([
+  {case_status: 'Open'},
+  {case_status: 'Closed'}
+  ])
+
 User.create!([
   {email: "alla@test.com", password: ENV["MA_BAIL_USER_PASSWORD"],
     password_confirmation: ENV["MA_BAIL_USER_PASSWORD"],
