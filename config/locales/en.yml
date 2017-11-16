@@ -31,6 +31,8 @@ en:
   case_detail:
     reference:
       description: A 3rd person who we can contact if we cannot reach the defendant, like a family member or social worker. Please do not put attorney information here.
+  user_feedback:
+    success: Submitted successfully
   simple_form:
     labels:
       client:
