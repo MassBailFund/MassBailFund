@@ -7,22 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-RequestStatus.create!([
-  {request_status: 'New'},
-  {request_status: 'In Process'},
-  {request_status: 'Approved'},
-  {request_status: 'On Hold'},
-  {request_status: 'Denied'},
-  {request_status: 'Withdrawn'},
-  ])
-
-BailStatus.create!([
-  {bail_status: 'None'},
-  {bail_status: 'Posted'},
-  {bail_status: 'Returned'},
-  {bail_status: 'Ready For Pickup'},
-  {bail_status: 'Outstanding Fee'},
-  {bail_status: 'Forfeited'},
-  {bail_status: 'Revoked'},
-  {bail_status: 'Warrant'}
+CaseStatus.create!([
+  {case_status: 'Open'},
+  {case_status: 'Closed'}
   ])
