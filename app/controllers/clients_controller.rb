@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
   before_action :load_facilities, only: [:new, :create]
 
   def new
-    # all logic handled by load_and_authorize_resource
+
   end
 
   def create
@@ -17,6 +17,7 @@ class ClientsController < ApplicationController
   private
 
   def after_create_path
+    flash[:notice] = t('user_feedback.success')
     root_path
   end
 
