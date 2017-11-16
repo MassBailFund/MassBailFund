@@ -26,6 +26,8 @@ en:
     index_client: All Requests
     index_client_scope_open: Open Requests
     index_reports: Reports
+    user_logout: Logout
+    user_login: Login
   case_detail:
     reference:
       description: A 3rd person who we can contact if we cannot reach the defendant, like a family member or social worker. Please do not put attorney information here.

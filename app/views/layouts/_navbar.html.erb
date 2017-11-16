@@ -24,6 +24,12 @@
         <% if can? :index, :reports %>
           <li><%= link_to t('navbar.index_reports'), admin_reports_path %></li>
         <% end %>
+        <% if user_signed_in? %>
+          <li><%= link_to t('navbar.user_logout'), destroy_user_session_path, method: :delete %></li>
+        <% end %>
+        <% if !user_signed_in? && controller_name != 'clients' %>
+          <li><%= link_to t('navbar.user_login'), new_user_session_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
