@@ -18,8 +18,11 @@ class Admin::ReportsController < ApplicationController
 
   def clients_by_month
     authorize! :clients, :report
-    @monthly_requests = Client.where('TIME_STAMP IS NOT NULL').order('TIME_STAMP DESC').group('MONTH(TIME_STAMP)').group('YEAR(TIME_STAMP)').count
-    @foo = 'BAR'
-    binding.pry
+
+    @monthly_requests = Client.where('TIME_STAMP IS NOT NULL')
+                              .order('TIME_STAMP DESC')
+                              .group('MONTH(TIME_STAMP)')
+                              .group('YEAR(TIME_STAMP)')
+                              .count
   end
 end

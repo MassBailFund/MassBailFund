@@ -1,6 +1,7 @@
 <table class="table table-hover">
   <colgroup>
-      <col style="width: 70%;">
+      <col style="width: 30%;">
+      <col style="width: 30%;">
       <col style="width: 30%;">
   </colgroup>
 <thead>
@@ -10,12 +11,13 @@
     <th>Year</th>
   </tr>
 </thead>
-<% @foo %>
+<%= @foo %>
 <tbody>
-  <% @monthly_requests.each do |time_stamp, count| %>
+  <% @monthly_requests.each do |timestamp_key, count| %>
     <tr>
-      <td><%= time_stamp %> TIME/td>
       <td><%= count %></td>
+      <td><%= Date::MONTHNAMES[timestamp_key[0]] %> </td>
+      <td><%= timestamp_key[1] %></td>
     </tr>
   <% end %>
 </tbody>
