@@ -1,0 +1,21 @@
+<table class="table table-hover">
+  <colgroup>
+      <col style="width: 50%;">
+      <col style="width: 50%;">
+  </colgroup>
+<thead>
+  <tr>
+    <th>Requests</th>
+    <th>Year</th>
+  </tr>
+</thead>
+<%= @foo %>
+<tbody>
+  <% @yearly_requests.each do |timestamp, count| %>
+    <tr onclick="location.href='<%= admin_clients_path(created_year: timestamp) %>'">
+      <td><%= count %></td>
+      <td><%= timestamp %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

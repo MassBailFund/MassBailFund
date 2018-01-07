@@ -25,4 +25,13 @@ class Admin::ReportsController < ApplicationController
                               .group('YEAR(TIME_STAMP)')
                               .count
   end
+
+  def clients_by_year
+    authorize! :clients, :report
+
+    @yearly_requests = Client.where('TIME_STAMP IS NOT NULL')
+                              .order('TIME_STAMP DESC')
+                              .group('YEAR(TIME_STAMP)')
+                              .count
+  end
 end

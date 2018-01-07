@@ -5,6 +5,10 @@
 
 <p>View <%= link_to 'all requests sorted by month.', clients_by_month_admin_reports_path %></p>
 
+<h3>Requests by Year</h3>
+
+<p>View <%= link_to 'all requests sorted by year.', clients_by_year_admin_reports_path %></p>
+
 <h3>Open Requests by Court</h3>
 
 <p>View <%= link_to 'all open requests sorted by court', admin_clients_path(order: 'court', scope: 'open') %>.</p>

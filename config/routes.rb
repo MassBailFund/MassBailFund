@@ -11,10 +11,12 @@ Rails.application.routes.draw do
     resources :reports do
       collection do
         get 'sureties'
-
       end
       collection do
         get 'clients_by_month'
+      end
+      collection do
+        get 'clients_by_year'
       end
     end
   end
