@@ -49,6 +49,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
 
+  gem 'pry-rails'
+
   # Lint code
   gem 'rubocop', require: false
   # Check for gems with CVEs
