@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <colgroup>
+      <col style="width: 70%;">
+      <col style="width: 30%;">
+  </colgroup>
+<thead>
+  <tr>
+    <th>Requests</th>
+    <th>Month</th>
+    <th>Year</th>
+  </tr>
+</thead>
+<% @foo %>
+<tbody>
+  <% @monthly_requests.each do |time_stamp, count| %>
+    <tr>
+      <td><%= time_stamp %> TIME/td>
+      <td><%= count %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

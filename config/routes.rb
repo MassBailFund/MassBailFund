@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :reports do
       collection do
         get 'sureties'
+        get 'clients_by_month'
       end
     end
   end
