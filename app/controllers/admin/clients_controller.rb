@@ -31,6 +31,14 @@ class Admin::ClientsController < ApplicationController
     if params[:surety_name].present?
       @clients = @clients.where(surety_name: params[:surety_name])
     end
+
+    if params[:created_month].present?
+      @clients = @clients.where("MONTH(TIME_STAMP) = #{params[:created_month]}")
+    end
+
+    if params[:created_year].present?
+      @clients = @clients.where("YEAR(TIME_STAMP) = #{params[:created_year]}")
+    end
   end
 
   def edit
