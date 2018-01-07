@@ -9,7 +9,6 @@
     <th>Year</th>
   </tr>
 </thead>
-<%= @foo %>
 <tbody>
   <% @yearly_requests.each do |timestamp, count| %>
     <tr onclick="location.href='<%= admin_clients_path(created_year: timestamp) %>'">
