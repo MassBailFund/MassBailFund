@@ -33,11 +33,11 @@ class Admin::ClientsController < ApplicationController
     end
 
     if params[:created_month].present?
-      @clients = @clients.where("MONTH(TIME_STAMP) = #{params[:created_month]}")
+      @clients = @clients.where('MONTH(TIME_STAMP) = ?',params[:created_month])
     end
 
     if params[:created_year].present?
-      @clients = @clients.where("YEAR(TIME_STAMP) = #{params[:created_year]}")
+      @clients = @clients.where('YEAR(TIME_STAMP) = ?', params[:created_year])
     end
   end
 
