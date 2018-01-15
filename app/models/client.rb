@@ -1,5 +1,7 @@
 class Client < ApplicationRecord
   include DowncaseAttributes
+  before_create :set_time_stamps
+  before_save :set_time_stamps
 
   belongs_to :request_status, foreign_key: :REQUEST_STATUS_ID
   belongs_to :bail_status, foreign_key: :BAIL_STATUS_ID
@@ -61,4 +63,10 @@ class Client < ApplicationRecord
   def case_status_type
     case_status&.case_status
   end
+
+  private
+    def set_time_stamps
+      self.TIME_STAMP = DateTime.now if self.new_record?
+      self.TIME_STAMP = DateTime.now
+    end
 end

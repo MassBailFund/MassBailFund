@@ -1,0 +1,23 @@
+<table class="table table-hover">
+  <colgroup>
+      <col style="width: 30%;">
+      <col style="width: 30%;">
+      <col style="width: 30%;">
+  </colgroup>
+<thead>
+  <tr>
+    <th>Requests</th>
+    <th>Month</th>
+    <th>Year</th>
+  </tr>
+</thead>
+<tbody>
+  <% @monthly_requests.each do |timestamp_key, count| %>
+    <tr onclick="location.href='<%= admin_clients_path(created_month: timestamp_key[0], created_year: timestamp_key[1]) %>'">
+      <td><%= count %></td>
+      <td><%= Date::MONTHNAMES[timestamp_key[0]] %> </td>
+      <td><%= timestamp_key[1] %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

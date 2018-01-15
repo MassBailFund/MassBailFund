@@ -54,6 +54,7 @@ GEM
     byebug (9.0.6)
     cancancan (1.16.0)
     choice (0.2.0)
+    coderay (1.1.2)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -114,6 +115,11 @@ GEM
     parser (2.4.0.0)
       ast (~> 2.2)
     powerpack (0.1.1)
+    pry (0.11.0)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+    pry-rails (0.3.6)
+      pry (>= 0.10.4)
     puma (3.8.2)
     rack (2.0.1)
     rack-test (0.6.3)
@@ -254,6 +260,7 @@ DEPENDENCIES
   listen (~> 3.0.5)
   mysql2 (~> 0.3.18)
   paper_trail
+  pry-rails
   puma (~> 3.0)
   rails (~> 5.0.2)
   rails-controller-testing
