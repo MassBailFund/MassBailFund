@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       collection do
         get 'sureties'
         get 'clients_by_month'
+        get 'clients_by_year'
       end
     end
   end
