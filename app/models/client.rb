@@ -38,7 +38,7 @@ class Client < ApplicationRecord
   validates :arraignment_date, presence: true
   validates :appearance_date, presence: true
   validates :bail_amount, presence: true, numericality: true
-  validates :gps_required, inclusion: [true, false], presence: true
+  validates :gps_required, inclusion: [true, false]
   validates :court, presence: true
 
   # allow access to columns using their lowercase name
