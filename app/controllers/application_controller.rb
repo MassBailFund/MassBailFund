@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
   # Hint: usually you don't want to opt-out of this check but want to modify
   # the Ability model.
   check_authorization unless: :devise_controller?
+
+  def after_sign_in_path_for(resource)
+    admin_clients_path(:scope => 'open')
+  end
 end

@@ -13,17 +13,20 @@
           <% if can? :update, @client %>
             <input class="btn btn-primary" type="submit" name="save" value="Save">
           <% end %>
+          <% if can? :update, @client %>
+            <input class="btn btn-primary" type="submit" name="save-and-close" value="Save and Close">
+          <% end %>
         </div>
       </div>
     </div>
 
     <div class="row">
       <div class="col-lg-6">
-        <%= f.input :request_status_id, as: :select, collection: @request_statuses, wrapper: :horizontal_form %>
+        <%= f.input :request_status_id, as: :select, include_blank: false, collection: @request_statuses, wrapper: :horizontal_form %>
 
         <%= f.input :score, wrapper: :horizontal_form %>
 
-        <%= f.input :bail_status_id, as: :select, collection: @bail_statuses, wrapper: :horizontal_form %>
+        <%= f.input :bail_status_id, as: :select, include_blank: false, collection: @bail_statuses, wrapper: :horizontal_form %>
 
         <%= f.input :amount_posted, as: :currency, wrapper: :horizontal_currency_input %>
 
@@ -35,11 +38,11 @@
 
         <%= f.input :surety_name, wrapper: :horizontal_form %>
 
-        <%= f.input :pooled, as: :select, wrapper: :horizontal_form %>
+        <%= f.input :pooled, as: :select, include_blank: false, wrapper: :horizontal_form %>
 
         <%= f.input :pooled_by, wrapper: :horizontal_form %>
 
-        <%= f.input :case_status_id, as: :select, collection: @case_statuses, wrapper: :horizontal_form %>
+        <%= f.input :case_status_id, as: :select, include_blank: false, collection: @case_statuses, wrapper: :horizontal_form %>
 
         <%= f.input :case_disposition, wrapper: :horizontal_form %>
 
@@ -129,11 +132,11 @@
         <dt>Next Appearance Date</dt>
         <dd><%= @client.appearance_date %></dd>
         <dt>GPS Required</dt>
-        <dd><%= @client.gps_required %></dd>
+        <dd><%= set_boolean_to_yesno(@client.gps_required) %></dd>
         <dt>Court Where Charged</dt>
         <dd><%= @client.court %></dd>
         <dt>Facility Where Held</dt>
-        <dd><%= @client.facility %></dd>
+        <dd><%= @facilities.find{|fac| @client.FACILITY.to_i == fac.id}.name %></dd>
       </dt>
     </div>
   </div>

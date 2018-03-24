@@ -53,7 +53,7 @@
           <td><%= client.date_returned %></td>
           <td><%= client.facility %></td>
           <td><%= client.surety_name %></td>
-          <td><%= client.gps_required %></td>
+          <td><%= set_boolean_to_yesno(client.gps_required) %></td>
           <td><%= client.attorney_name %></td>
           <td><%= client.time_stamp&.strftime('%b %d %Y %I:%M %p') %></td></tr>
         </tr>

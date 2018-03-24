@@ -7,6 +7,9 @@ class Admin::ClientsController < ApplicationController
   before_action :set_locals
 
   def show
+    if @client.pooled == nil
+      @client.pooled = false
+    end
     render :edit
   end
 
@@ -45,8 +48,10 @@ class Admin::ClientsController < ApplicationController
   end
 
   def update
-    if @client.update_attributes(update_params)
+    if @client.update_attributes(update_params) && params.keys.include?("save")
       redirect_to action: :show, id: params[:id]
+    elsif @client.update_attributes(update_params) && params.keys.include?("save-and-close")
+      redirect_to action: :index
     else
       render :edit
     end
@@ -58,10 +63,20 @@ class Admin::ClientsController < ApplicationController
     redirect_to action: :index
   end
 
+  helper_method :set_boolean_to_yesno
+
   private
 
   def update_params
     params.require(:client).permit(Client.attribute_names.map(&:downcase))
+  end
+
+  def set_boolean_to_yesno(bool)
+    if bool
+      return 'Yes'
+    else
+      return 'No'
+    end
   end
 
   def set_locals

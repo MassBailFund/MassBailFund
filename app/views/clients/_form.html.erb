@@ -47,7 +47,7 @@
           </div>
         </div>
         <%= f.input :bail_amount, as: :integer, html5: true %>
-        <%= f.input :gps_required, label: '* GPS Required?', as: :select %>
+        <%= f.input :gps_required, label: '* GPS Required?', as: :select, prompt: :translate %>
         <%= f.input :court %>
 
         <%= f.input :facility, as: :select, collection: @facilities, prompt: :translate %>
