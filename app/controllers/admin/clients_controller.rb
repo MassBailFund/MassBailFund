@@ -7,6 +7,9 @@ class Admin::ClientsController < ApplicationController
   before_action :set_locals
 
   def show
+    if @client.pooled == nil
+      @client.pooled = false
+    end
     render :edit
   end
 
