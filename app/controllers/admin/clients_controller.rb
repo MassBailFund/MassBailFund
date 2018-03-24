@@ -58,10 +58,20 @@ class Admin::ClientsController < ApplicationController
     redirect_to action: :index
   end
 
+  helper_method :set_boolean_to_yesno
+
   private
 
   def update_params
     params.require(:client).permit(Client.attribute_names.map(&:downcase))
+  end
+
+  def set_boolean_to_yesno(bool)
+    if bool
+      return 'Yes'
+    else
+      return 'No'
+    end
   end
 
   def set_locals

@@ -129,7 +129,7 @@
         <dt>Next Appearance Date</dt>
         <dd><%= @client.appearance_date %></dd>
         <dt>GPS Required</dt>
-        <dd><%= @client.gps_required %></dd>
+        <dd><%= set_boolean_to_yesno(@client.gps_required) %></dd>
         <dt>Court Where Charged</dt>
         <dd><%= @client.court %></dd>
         <dt>Facility Where Held</dt>
