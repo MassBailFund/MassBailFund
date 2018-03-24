@@ -13,6 +13,9 @@
           <% if can? :update, @client %>
             <input class="btn btn-primary" type="submit" name="save" value="Save">
           <% end %>
+          <% if can? :update, @client %>
+            <input class="btn btn-primary" type="submit" name="save-and-close" value="Save and Close">
+          <% end %>
         </div>
       </div>
     </div>

@@ -45,8 +45,10 @@ class Admin::ClientsController < ApplicationController
   end
 
   def update
-    if @client.update_attributes(update_params)
+    if @client.update_attributes(update_params) && params.keys.include?("save")
       redirect_to action: :show, id: params[:id]
+    elsif @client.update_attributes(update_params) && params.keys.include?("save-and-close")
+      redirect_to action: :index
     else
       render :edit
     end
