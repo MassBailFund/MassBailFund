@@ -35,3 +35,7 @@ Tool                | Description
 
 The models are currently a work in progress. We are waiting to look at the
 current schema before making decisions on how to model things.
+
+## Deployment
+
+We are currently using Heroku to deploy. Heroku's [docs on getting set up are pretty thorough, and are located here](https://devcenter.heroku.com/articles/git).
