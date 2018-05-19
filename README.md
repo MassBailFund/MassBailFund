@@ -39,3 +39,5 @@ current schema before making decisions on how to model things.
 ## Deployment
 
 We are currently using Heroku to deploy. Heroku's [docs on getting set up are pretty thorough, and are located here](https://devcenter.heroku.com/articles/git).
+
+You will need to take a couple of extra steps if this is your first time provisioning and deploying to a new environment. The dummy user the app's initialized with will draw its password from an environment variable `MA_BAIL_USER_PASSWORD`. You'll also need to install the cleardb add-on (here)[https://devcenter.heroku.com/articles/cleardb] in order to use MySQL, and follow the instructions for the mysql2 gem in order to get your database url. Then, you'll need to make an environment variable with that as the value and the key `DATABASE_URL`. You will also, if this is a first deployment, want to run rake db:migrate and rake db:seed to populate dropdowns, etc.
