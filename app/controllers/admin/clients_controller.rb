@@ -15,7 +15,6 @@ class Admin::ClientsController < ApplicationController
 
   def index
     @clients = @clients.order(:request_status_id)
-    binding.pry
 
     # filtering and ordering
     params[:scope]&.split(',')&.each do |scope|
