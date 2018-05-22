@@ -11,7 +11,7 @@ class ClientsController < ApplicationController
   end
 
   def create
-    redirect_to after_create_path if @client.save
+    redirect_to "https://www.massbailfund.org/request-received.html" if @client.save
   end
 
   private
