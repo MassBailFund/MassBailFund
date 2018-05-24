@@ -14,12 +14,13 @@ class Admin::ClientsController < ApplicationController
   end
 
   def index
-    @clients = @clients.order(:request_status_id)
+    @clients = @clients
+    .order(:request_status_id, :bail_status_id, :facility, time_stamp: :desc)
 
     # filtering and ordering
     params[:scope]&.split(',')&.each do |scope|
       if scope == 'open'
-        @clients = @clients.open
+        @clients = @clients.where("clients.REQUEST_STATUS_ID IN (1, 2)  OR (clients.REQUEST_STATUS_ID = 3  AND (clients.BAIL_STATUS_ID = 4 OR clients.BAIL_STATUS_ID = 1))")
       elsif scope == 'dismissed'
         @clients = @clients.dismissed
       end
