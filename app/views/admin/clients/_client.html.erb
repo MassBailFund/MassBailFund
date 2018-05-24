@@ -5,7 +5,7 @@
   <td><%= client.bail_amount %></td>
   <td><%= client.funds_withdrawal_date unless client.funds_withdrawal_date == '0000-00-00' %></td>
   <td><%= client.date_returned %></td>
-  <td><%= @facilities.find{|fac| client.FACILITY.to_i == fac.id}.nil? || @facilities.find{|fac| client.FACILITY.to_i == fac.id}.name %></td>
+  <td><%= @facilities.find{|fac| client.FACILITY.to_i == fac.id}.nil? ? '--' : @facilities.find{|fac| client.FACILITY.to_i == fac.id}.name %></td>
   <td><%= client.surety_name %></td>
   <td><%= client.gps_required %></td>
   <td><%= client.attorney_name %></td>
