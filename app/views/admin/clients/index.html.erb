@@ -16,7 +16,7 @@
         <tr id='client_<% client.id %>' onclick="<%= "location.href='#{admin_client_path(client)}'" %>">
           <td><%= link_to client.client_name, admin_client_path(client) %></td>
           <td><%= client.request_status_type %></td>
-          <td><%= client.bail_status_type %></td>
+          <td><%= client.bail_status_type(@bail_statuses) %></td>
           <td><%= client.bail_amount %></td>
           <td><%= @facilities.find{|fac| client.FACILITY.to_i == fac.id}.nil? ? '--' : @facilities.find{|fac| client.FACILITY.to_i == fac.id}.name %></td>
           <td><%= client.docket %></td>
@@ -47,7 +47,7 @@
         <tr id='client_<% client.id %>' onclick="<%= "location.href='#{admin_client_path(client)}'" %>">
           <td><%= link_to client.client_name, admin_client_path(client) %></td>
           <td><%= client.request_status_type %></td>
-          <td><%= client.bail_status_type %></td>
+          <td><%= client.bail_status_type(@bail_statuses) %></td>
           <td><%= client.bail_amount %></td>
           <td><%= client.funds_withdrawal_date unless client.funds_withdrawal_date == '0000-00-00' %></td>
           <td><%= client.date_returned %></td>
