@@ -43,20 +43,35 @@
       </tr>
     </thead>
     <body>
-      <% @clients.each do |client| %>
-        <tr id='client_<% client.id %>' onclick="<%= "location.href='#{admin_client_path(client)}'" %>">
-          <td><%= link_to client.client_name, admin_client_path(client) %></td>
-          <td><%= client.request_status_type %></td>
-          <td><%= client.bail_status_type(@bail_statuses) %></td>
-          <td>$<%= client.bail_amount %></td>
-          <td><%= client.funds_withdrawal_date unless client.funds_withdrawal_date == '0000-00-00' %></td>
-          <td><%= client.date_returned %></td>
-          <td><%= @facilities.find{|fac| client.FACILITY.to_i == fac.id}.nil? ? '--' : @facilities.find{|fac| client.FACILITY.to_i == fac.id}.name %></td>
-          <td><%= client.surety_name %></td>
-          <td><%= set_boolean_to_yesno(client.gps_required) %></td>
-          <td><%= client.attorney_name %></td>
-          <td><%= client.time_stamp&.strftime('%b %d %Y %I:%M %p') %></td></tr>
+      <% @clientsGrouped.each do |clients| %>
+        <tr>
+          <td><strong><%= clients[1].count %> Clients</strong></td>
+          <td><%= clients[1][0].request_status_type %></td>
+          <td><%= clients[1][0].bail_status_type(@bail_statuses) %></td>
+          <td>$<%=sum_bail_amounts(clients[1]) %> Total</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
         </tr>
+        <% clients[1].each do |client| %>
+          <tr id='client_<% client.id %>' onclick="<%= "location.href='#{admin_client_path(client)}'" %>">
+            <td><%= link_to client.client_name, admin_client_path(client) %></td>
+            <td><%= client.request_status_type %></td>
+            <td><%= client.bail_status_type(@bail_statuses) %></td>
+            <td>$<%= client.bail_amount %></td>
+            <td><%= client.funds_withdrawal_date unless client.funds_withdrawal_date == '0000-00-00' %></td>
+            <td><%= client.date_returned %></td>
+            <td><%= @facilities.find{|fac| client.FACILITY.to_i == fac.id}.nil? ? '--' : @facilities.find{|fac| client.FACILITY.to_i == fac.id}.name %></td>
+            <td><%= client.surety_name %></td>
+            <td><%= set_boolean_to_yesno(client.gps_required) %></td>
+            <td><%= client.attorney_name %></td>
+            <td><%= client.time_stamp&.strftime('%b %d %Y %I:%M %p') %></td></tr>
+          </tr>
+        <% end %>
       <% end %>
     </body>
   </table>

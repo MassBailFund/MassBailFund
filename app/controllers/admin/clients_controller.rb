@@ -17,6 +17,9 @@ class Admin::ClientsController < ApplicationController
     @clients = @clients
     .order(:request_status_id, :bail_status_id, :facility, time_stamp: :desc)
 
+    if params[:scope] == nil
+      @clientsGrouped = @clients.group_by{|client| [client.bail_status_id, client.request_status_id]}
+    end
     # filtering and ordering
     params[:scope]&.split(',')&.each do |scope|
       if scope == 'open'
@@ -65,11 +68,17 @@ class Admin::ClientsController < ApplicationController
   end
 
   helper_method :set_boolean_to_yesno
+  helper_method :sum_bail_amounts
 
   private
 
   def update_params
     params.require(:client).permit(Client.attribute_names.map(&:downcase))
+  end
+
+  def sum_bail_amounts(clients)
+    summedBail = clients.collect{|client| client.bail_amount}.map{|val| val.gsub(/[^\d\.]/, '').to_i}.reduce(:+)
+    return summedBail
   end
 
   def set_boolean_to_yesno(bool)
