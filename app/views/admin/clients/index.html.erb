@@ -44,7 +44,7 @@
     </thead>
     <body>
       <% @clientsGrouped.each do |clients| %>
-        <tr>
+        <tr id='clientgroup_parent_<%= clients[0][0] %>_<%= clients[0][1] %>' class='clientgroup_parent'>
           <td><strong><%= clients[1].count %> Clients</strong></td>
           <td><%= clients[1][0].request_status_type %></td>
           <td><%= clients[1][0].bail_status_type(@bail_statuses) %></td>
@@ -57,8 +57,10 @@
           <td></td>
           <td></td>
         </tr>
+
         <% clients[1].each do |client| %>
-          <tr id='client_<% client.id %>' onclick="<%= "location.href='#{admin_client_path(client)}'" %>">
+          <tr id='client_<% client.id %>' onclick="<%= "location.href='#{admin_client_path(client)}'" %>"
+            class='clientgroup_<%= clients[0][0] %>_<%= clients[0][1] %>'>
             <td><%= link_to client.client_name, admin_client_path(client) %></td>
             <td><%= client.request_status_type %></td>
             <td><%= client.bail_status_type(@bail_statuses) %></td>
