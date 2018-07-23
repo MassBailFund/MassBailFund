@@ -28,7 +28,12 @@
           </li>
         <% end %>
         <% if can? :index, :reports %>
-          <li class="<%= active_tab_class(admin_reports_path, false) %>">
+          <li class="<%= active_tab_class(admin_reports_path,
+          sureties_admin_reports_path,
+          clients_by_month_admin_reports_path,
+          clients_by_year_admin_reports_path,
+          clients_for_year_admin_reports_path,
+          false) %>">
             <%= link_to t('navbar.index_reports'), admin_reports_path %>
           </li>
         <% end %>
