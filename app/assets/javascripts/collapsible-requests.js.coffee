@@ -5,7 +5,12 @@ toggleCollapse = (element) ->
     element.classList.add('collapse');
 
 @hideGroup = (clientType) ->
-  groupClass = ".clientgroup_" + clientType[0] + "_" + clientType[1];
+  groupClass = ".clientgroup_item_" + clientType[0] + "_" + clientType[1];
   elementsInGroup = document.querySelectorAll(groupClass);
   for i in elementsInGroup
     toggleCollapse(i);
+
+@hideAllGroups = () ->
+  groupElements = document.querySelectorAll('[class^="clientgroup_item"]')
+  for i in groupElements
+    i.classList.add('collapse')
