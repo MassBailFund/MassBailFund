@@ -44,7 +44,7 @@
     </thead>
     <body>
       <% @clientsGrouped.each do |clients| %>
-        <tr id='clientgroup_parent_<%= clients[0][0] %>_<%= clients[0][1] %>' class='clientgroup_parent'>
+        <tr onclick="hideGroup(<%= clients[0] %>)" id='clientgroup_parent_<%= clients[0][0] %>_<%= clients[0][1] %>' class='clientgroup_parent'>
           <td><strong><%= clients[1].count %> Clients</strong></td>
           <td><%= clients[1][0].request_status_type %></td>
           <td><%= clients[1][0].bail_status_type(@bail_statuses) %></td>
