@@ -10,7 +10,18 @@ toggleCollapse = (element) ->
   for i in elementsInGroup
     toggleCollapse(i);
 
+groupExpanded = true;
+
 @hideAllGroups = () ->
   groupElements = document.querySelectorAll('[class^="clientgroup_item"]')
+  collapsing = groupExpanded;
+  if collapsing
+    groupExpanded = false
+  else
+    groupExpanded = true
+
   for i in groupElements
-    i.classList.add('collapse')
+    if collapsing
+      i.classList.add('collapse')
+    else
+      i.classList.remove('collapse')
