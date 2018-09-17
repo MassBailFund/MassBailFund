@@ -1,0 +1,24 @@
+<table class='table table-hover listing'>
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th>Bail Amount</th>
+      <th>Amount Posted</th>
+      <th>Commissioner's Fee</th>
+      <th>Race</th>
+      <th>Date Posted</th>
+    </tr>
+  </thead>
+  <body>
+    <% @clients.each do |client| %>
+      <tr id='client_<% client.id %>' onclick="<%= "location.href='#{admin_client_path(client)}'" %>">
+        <td><%= link_to client.client_name, admin_client_path(client) %></td>
+        <td>$<%= client.bail_amount %></td>
+        <td><%= client.amount_posted %></td>
+        <td><%= client.commissioners_fee %></td>
+        <td><%= client.court %></td>
+        <td><%= client.bailed_date %></td>
+      </tr>
+    <% end %>
+  </body>
+</table>

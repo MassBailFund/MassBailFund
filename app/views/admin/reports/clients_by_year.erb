@@ -11,7 +11,7 @@
 </thead>
 <tbody>
   <% @yearly_requests.each do |timestamp, count| %>
-    <tr onclick="location.href='<%= admin_clients_path(created_year: timestamp) %>'">
+    <tr onclick="location.href='<%= clients_for_year_admin_reports_path(created_year: timestamp) %>'">
       <td><%= count %></td>
       <td><%= timestamp %></td>
     </tr>
