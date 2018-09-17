@@ -56,8 +56,8 @@ class Client < ApplicationRecord
     request_status&.request_status
   end
 
-  def bail_status_type
-    bail_status&.bail_status
+  def bail_status_type(bail_statuses)
+    bail_statuses.find{|status| bail_status_id.to_i == status.id}.nil? ? '--' : bail_statuses.find{|status| bail_status_id.to_i == status.id}.name
   end
 
   def case_status_type
