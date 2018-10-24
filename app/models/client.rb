@@ -15,31 +15,31 @@ class Client < ApplicationRecord
   scope :dismissed, -> { closed.where("case_disposition LIKE ('%DISMISSED%')") }
   scope :not_dismissed, -> { closed.where("case_disposition NOT LIKE ('%DISMISSED%')") }
 
-  validates :attorney_name, presence: true
-  validates :attorney_email, presence: true
-  validates :attorney_phone, presence: true
-  validates :attorney_address, presence: true
+  validates :attorney_name, presence: true, on: :create
+  validates :attorney_email, presence: true, on: :create
+  validates :attorney_phone, presence: true, on: :create
+  validates :attorney_address, presence: true, on: :create
 
-  validates :client_name, presence: true
-  validates :client_email, presence: true
-  validates :client_phone, presence: true
-  validates :client_address, presence: true
-  validates :client_dob, presence: true
+  validates :client_name, presence: true, on: :create
+  validates :client_email, presence: true, on: :create
+  validates :client_phone, presence: true, on: :create
+  validates :client_address, presence: true, on: :create
+  validates :client_dob, presence: true, on: :create
 
-  validates :reference_name, presence: true
+  validates :reference_name, presence: true, on: :create
   # no validates :reference_email
-  validates :reference_phone, presence: true
-  validates :reference_address, presence: true
-  validates :reference_relationship, presence: true
+  validates :reference_phone, presence: true, on: :create
+  validates :reference_address, presence: true, on: :create
+  validates :reference_relationship, presence: true, on: :create
 
-  validates :facility, presence: true
-  validates :docket, presence: true
-  validates :charges, presence: true
-  validates :arraignment_date, presence: true
-  validates :appearance_date, presence: true
-  validates :bail_amount, presence: true, numericality: true
-  validates :gps_required, inclusion: [true, false]
-  validates :court, presence: true
+  validates :facility, presence: true, on: :create
+  validates :docket, presence: true, on: :create
+  validates :charges, presence: true, on: :create
+  validates :arraignment_date, presence: true, on: :create
+  validates :appearance_date, presence: true, on: :create
+  validates :bail_amount, presence: true, numericality: true, on: :create
+  validates :gps_required, inclusion: [true, false], on: :create
+  validates :court, presence: true, on: :create
 
   # allow access to columns using their lowercase name
   self.columns.each do |attribute|
