@@ -1,0 +1,55 @@
+Attorney
+
+<%= @client.attorney_name %> (<%= @client.attorney_email %>)
+<%= @client.attorney_address %>
+P: <%= @client.attorney_phone %>
+
+Client
+
+<%= @client.client_name %>
+<%= @client.client_address %>
+P: <%= @client.client_phone %>
+DOB: <%= @client.client_dob %>
+Race: <%= @client.race %>
+Reference: a (a), a, a
+Case  Edit
+
+Bail Amount
+$<%= @client.bail_amount %>
+Docket
+<%= @client.docket %>
+Charges
+<%= @client.charges %>
+Arraignment Date
+<%= @client.arraignment_date %>
+Next Appearance Date
+<%= @client.appearance_date %>
+GPS Required
+<%= set_boolean_to_yesno(@client.gps_required) %>
+Court Where Charged
+<%= @client.court %>
+Facility Where Held
+<%= @facilities.find{|fac| @client.FACILITY.to_i == fac.id}.nil? ||@facilities.find{|fac| @client.FACILITY.to_i == fac.id}.name %>
+
+Notes
+
+Other open cases?
+<%= @client.open_cases %>
+Outstanding warrants?
+<%= @client.warrants %>
+Released upon posting?
+<%= @client.released_upon_posting %>
+In school?
+<%= @client.school %>
+Employed?
+<%= @client.employment %>
+Homeless/precariously housed?
+<%= @client.housing %>
+History of default?
+<%= @client.history %>
+Support person?
+<%= @client.support_person %>
+Additional info?
+<%= @client.additional_info %>
+
+Visit <%= link_to 'Mass Bail Fund Administration', new_user_session_path %> to manage referrals.

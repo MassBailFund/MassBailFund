@@ -11,7 +11,10 @@ class ClientsController < ApplicationController
   end
 
   def create
-    redirect_to "https://www.massbailfund.org/request-received.html" if @client.save
+    if @client.save
+      NewReferralMailer.new_referral_email(@client).deliver
+      redirect_to "https://www.massbailfund.org/request-received.html"
+    end
   end
 
   private
