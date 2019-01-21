@@ -21,7 +21,7 @@
 
           <%= f.input :court, wrapper: :horizontal_form %>
 
-          <%= f.input :facility, as: :select, collection: @facilities, prompt: :translate, wrapper: :horizontal_form %>
+          <%= f.input :facility, as: :select, collection: @facilities, prompt: :translate, wrapper: :horizontal_form, selected: @client.facility_id(@facilities) %>
         </div>
         <div class="modal-footer">
           <%= f.submit 'Save', class: 'btn btn-primary' %>

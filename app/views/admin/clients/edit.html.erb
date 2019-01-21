@@ -136,7 +136,7 @@
         <dt>Court Where Charged</dt>
         <dd><%= @client.court %></dd>
         <dt>Facility Where Held</dt>
-        <dd><%= @facilities.find{|fac| @client.FACILITY.to_i == fac.id}.nil? ||@facilities.find{|fac| @client.FACILITY.to_i == fac.id}.name %></dd>
+        <dd><%= @client.facility_name(@facilities) %></dd>
       </dt>
     </div>
   </div>
