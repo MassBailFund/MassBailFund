@@ -38,7 +38,7 @@
           </li>
         <% end %>
         <% if can? :index, :settings %>
-          <li class="<%= active_tab_class(new_user_session_path, false) %>">
+          <li class="<%= active_tab_class(settings_path, false) %>">
             <%= link_to t('navbar.settings'), settings_path %>
           </li>
         <% end %>

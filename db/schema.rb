@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170507015636) do
+ActiveRecord::Schema.define(version: 20180521212613) do
 
   create_table "ATTACHMENTS", primary_key: "ATTACHMENT_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
     t.integer "CLIENT_ID"
@@ -26,7 +26,11 @@ ActiveRecord::Schema.define(version: 20170507015636) do
     t.string "CASE_STATUS", limit: 100
   end
 
-  create_table "CLIENTS", primary_key: "CLIENT_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
+  create_table "REQUEST_STATUSES", primary_key: "REQUEST_STATUS_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
+    t.string "REQUEST_STATUS", limit: 100
+  end
+
+  create_table "clients", primary_key: "CLIENT_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
     t.string   "NOTES",                  limit: 4000
     t.integer  "SCORE"
     t.integer  "REQUEST_STATUS_ID",                    default: 1
@@ -77,20 +81,17 @@ ActiveRecord::Schema.define(version: 20170507015636) do
     t.string   "BAIL_SLIP"
     t.string   "CLIENT_CODE",            limit: 32
     t.string   "DATE_STRING",            limit: 32
+    t.string   "CLIENT_RACE"
   end
 
-  create_table "REQUEST_STATUSES", primary_key: "REQUEST_STATUS_ID", force: :cascade, options: "ENGINE=MyISAM DEFAULT CHARSET=utf8" do |t|
-    t.string "REQUEST_STATUS", limit: 100
-  end
-
-  create_table "facilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "facilities", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_facilities_on_name", unique: true, using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

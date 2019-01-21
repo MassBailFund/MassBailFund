@@ -7,6 +7,7 @@ class SettingsController < ApplicationController
   def index
     @settings = Setting.all
     @users = User.all
+    @user = User.new(user_params)
   end
 
   # PATCH/PUT /settings/1
@@ -31,5 +32,10 @@ class SettingsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def setting_params
       params.fetch(:setting, {})
+    end
+
+    def user_params
+       binding.pry
+       params.permit(:user, :email, :password)
     end
 end

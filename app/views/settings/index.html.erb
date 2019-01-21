@@ -24,7 +24,11 @@
 
 <h2>Users</h2>
 
-<%= link_to('Add user', new_user_registration_path)  %>
+<%= simple_form_for @user, method: :post do |f| %>
+    <td><%= f.text_field :email %></td>
+    <td><%= f.text_field :password %></td>
+    <td><%= f.submit "Update" %></td>
+<% end %>
 
 <table>
   <thead>

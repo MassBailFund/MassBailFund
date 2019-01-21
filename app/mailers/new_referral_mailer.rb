@@ -4,7 +4,8 @@ class NewReferralMailer < ApplicationMailer
   def new_referral_email(client)
     @client = client
     @facilities = Facility.all
+    toAddress = Settings.where(name: 'New referral to address').value
     subjectLine = 'New Bail Fund Request: ' + @client.client_name + ' - $' + client.bail_amount;
-    mail(to: 'allajdhoffman@gmail.com', subject: subjectLine)
+    mail(to: toAddress, subject: subjectLine)
   end
 end

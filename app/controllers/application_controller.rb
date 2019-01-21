@@ -16,6 +16,12 @@ class ApplicationController < ActionController::Base
   # the Ability model.
   check_authorization unless: :devise_controller?
 
+  before_filter do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
+  end
+
   def after_sign_in_path_for(resource)
     admin_clients_path(:scope => 'open')
   end

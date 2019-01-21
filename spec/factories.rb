@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :setting do
+    
+  end
   sequence :address do
     "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.zip}, MA"
   end
