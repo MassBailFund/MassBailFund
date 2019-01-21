@@ -10,7 +10,6 @@ Client
 <%= @client.client_address %>
 P: <%= @client.client_phone %>
 DOB: <%= @client.client_dob %>
-Race: <%= @client.race %>
 Reference: a (a), a, a
 Case  Edit
 
@@ -25,7 +24,7 @@ Arraignment Date
 Next Appearance Date
 <%= @client.appearance_date %>
 GPS Required
-<%= set_boolean_to_yesno(@client.gps_required) %>
+<%= @client.gps_required_string() %>
 Court Where Charged
 <%= @client.court %>
 Facility Where Held
@@ -52,4 +51,4 @@ Support person?
 Additional info?
 <%= @client.additional_info %>
 
-Visit <%= link_to 'Mass Bail Fund Administration', new_user_session_path %> to manage referrals.
+Visit <%= link_to 'Mass Bail Fund Administration', new_user_session_url %> to manage referrals.
