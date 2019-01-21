@@ -24,8 +24,6 @@
 
 <h2>Users</h2>
 
-<%= link_to('Add user', new_user_registration_path)  %>
-
 <table>
   <thead>
     <tr>
@@ -35,7 +33,6 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= link_to "Destroy", admin_destroy_user_path(user), method: :delete, data: { confirm: "You sure?" } %></td>
       </tr>
     <% end %>
   </tbody>
