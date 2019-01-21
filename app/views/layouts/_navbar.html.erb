@@ -37,6 +37,11 @@
             <%= link_to t('navbar.index_reports'), admin_reports_path %>
           </li>
         <% end %>
+        <% if can? :index, :settings %>
+          <li class="<%= active_tab_class(new_user_session_path, false) %>">
+            <%= link_to t('navbar.settings'), settings_path %>
+          </li>
+        <% end %>
         <% if user_signed_in? %>
           <li class="<%= active_tab_class(destroy_user_session_path, false) %>">
             <%= link_to t('navbar.user_logout'), destroy_user_session_path, method: :delete %>

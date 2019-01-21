@@ -68,6 +68,18 @@ class Client < ApplicationRecord
     return Integer(facility)
   end
 
+  def gps_required_string()
+    return set_boolean_to_yesno(gps_required)
+  end
+
+  def set_boolean_to_yesno(bool)
+    if bool
+      return 'Yes'
+    else
+      return 'No'
+    end
+  end
+
   def self.total_commissioners_fees
     sum(:commissioners_fee)
   end
