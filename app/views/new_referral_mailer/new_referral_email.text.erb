@@ -28,7 +28,7 @@ GPS Required
 Court Where Charged
 <%= @client.court %>
 Facility Where Held
-<%= @facilities.find{|fac| @client.FACILITY.to_i == fac.id}.nil? ||@facilities.find{|fac| @client.FACILITY.to_i == fac.id}.name %>
+<%= @client.facility_name(@facilities) %>
 
 Notes
 
