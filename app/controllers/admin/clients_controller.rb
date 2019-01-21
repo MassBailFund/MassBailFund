@@ -10,6 +10,7 @@ class Admin::ClientsController < ApplicationController
     if @client.pooled == nil
       @client.pooled = false
     end
+    @facilities = Facility.all
     render :edit
   end
 
