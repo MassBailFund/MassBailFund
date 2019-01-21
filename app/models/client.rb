@@ -48,6 +48,16 @@ class Client < ApplicationRecord
     end
   end
 
+  def facility_name(facilities)
+    begin
+      Integer(facility)
+    rescue ArgumentError
+      return facility
+    end
+    correct_facility = facilities.find{|listed_facility| Integer(facility) == listed_facility.id}
+    return correct_facility.name
+  end
+
   def self.total_commissioners_fees
     sum(:commissioners_fee)
   end

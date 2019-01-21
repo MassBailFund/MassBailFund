@@ -3,7 +3,7 @@
     <!-- Title -->
     <div class="row">
       <div class="col-lg-6">
-        <h4 class="col-md-offset-3 col-md-9" style="white-space: nowrap"><%= @client.client_name %> - $<%= @client.bail_amount %>, <%= @client.facility %></h4>
+        <h4 class="col-md-offset-3 col-md-9" style="white-space: nowrap"><%= @client.client_name %> - $<%= @client.bail_amount %>, <%= @client.facility_name(@facilities) %></h4>
       </div>
       <div class="col-lg-6">
         <div class="pull-right">
