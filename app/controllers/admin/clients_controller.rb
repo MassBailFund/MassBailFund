@@ -18,9 +18,6 @@ class Admin::ClientsController < ApplicationController
     @clients = @clients
     .order(:request_status_id, :bail_status_id, :facility, time_stamp: :desc)
 
-    if params[:scope] == nil
-      @clientsGrouped = @clients.group_by{|client| [client.bail_status_id, client.request_status_id]}
-    end
     # filtering and ordering
     params[:scope]&.split(',')&.each do |scope|
       if scope == 'open'
@@ -47,6 +44,8 @@ class Admin::ClientsController < ApplicationController
     if params[:created_year].present?
       @clients = @clients.where('YEAR(TIME_STAMP) = ?', params[:created_year])
     end
+
+    @clientsGrouped = @clients.group_by{|client| [client.bail_status_id, client.request_status_id]}
   end
 
   def edit
