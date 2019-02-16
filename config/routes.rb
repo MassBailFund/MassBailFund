@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   devise_for :users
+  resources :users, except: :create
 
   resources :clients, only: [:new, :create]
 
   namespace :admin do
     match 'users/:id' => 'users#destroy', :via => :delete, :as => :destroy_user
+    post 'create_user' => 'users#create', as: :create_user  
     resources :clients, except: [:new, :create]
     resources :attachments, only: :show
     resources :reports do

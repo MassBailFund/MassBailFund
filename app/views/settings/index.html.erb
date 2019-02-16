@@ -24,6 +24,14 @@
 
 <h2>Users</h2>
 
+Create new user
+<%= simple_form_for @new_user, method: :post, url: admin_create_user_path do |f| %>
+  <%= f.text_field :email %>
+  <%= f.text_field :password %>
+  <%= f.submit "Create" %>
+<% end %>
+<br/>
+
 <table>
   <thead>
     <tr>
