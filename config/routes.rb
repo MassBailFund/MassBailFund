@@ -9,8 +9,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     match 'users/:id' => 'users#destroy', :via => :delete, :as => :destroy_user
-    post 'create_user' => 'users#create', as: :create_user  
+    post 'create_user' => 'users#create', as: :create_user
     resources :clients, except: [:new, :create]
+    resources :clients do
+      get :export_all, on: :collection
+    end
     resources :attachments, only: :show
     resources :reports do
       collection do

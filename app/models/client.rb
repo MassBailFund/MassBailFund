@@ -102,6 +102,17 @@ class Client < ApplicationRecord
     case_status&.case_status
   end
 
+  def self.to_csv(options = {})
+    binding.pry
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |foo|
+        values = foo.attributes.values
+        csv.add_row values
+      end
+    end
+  end
+
   private
     def set_time_stamps
       self.TIME_STAMP = DateTime.now if self.new_record?

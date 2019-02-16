@@ -67,6 +67,16 @@ class Admin::ClientsController < ApplicationController
     redirect_to action: :index
   end
 
+  def export_all
+    print 'foo'
+    binding.pry
+    # clients = @Clients.all
+    # respond_to do |format|
+    #   format.html
+    #   format.csv { send_data clients.to_csv, filename: "clients-#{Date.today}.csv" }
+    # end
+  end
+
   helper_method :set_boolean_to_yesno
   helper_method :sum_bail_amounts
 
