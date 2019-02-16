@@ -59,10 +59,16 @@ class Client < ApplicationRecord
   end
 
   def facility_id(facilities)
+    if facility is Nil
+      return facility
+    end
     begin
       Integer(facility)
     rescue ArgumentError
       correct_facility = facilities.find{|listed_facility| facility == listed_facility.name}
+      if correct_facility is Nil
+        return 0
+      end
       return correct_facility.id
     end
     return Integer(facility)

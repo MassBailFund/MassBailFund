@@ -7,6 +7,7 @@ class SettingsController < ApplicationController
   def index
     @settings = Setting.all
     @users = User.all
+    @new_user = User.new
   end
 
   # PATCH/PUT /settings/1
