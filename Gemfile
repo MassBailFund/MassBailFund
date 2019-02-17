@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -35,7 +35,8 @@ gem 'sendgrid-ruby'
 
 #Per this post, the version matters for Heroku deployment
 # https://medium.com/@emersonthis/running-rails-with-mysql-on-heroku-4765df033428
-gem 'mysql2', '~> 0.3.18'
+#gem 'mysql2', '~> 0.3.18'
+gem 'mysql2'
 
 # generate entity relationship diagrams
 gem 'rails-erd', require: false, group: :erd
