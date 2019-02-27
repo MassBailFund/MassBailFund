@@ -30,10 +30,10 @@ Tool                | Description
 
 Tool                | Description
 ------------------- | -----------
-[FactoryGirl]       | Easily create models to test with
+[FactoryBot]        | Easily create models to test with
 [Faker]             | Generate realistic looking fake data
 
-[FactoryGirl]: https://github.com/thoughtbot/factory_girl
+[FactoryBot]: https://github.com/thoughtbot/factory_bot
 [Faker]: https://github.com/stympy/faker
 
 ## Models [TODO: update]
