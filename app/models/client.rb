@@ -1,4 +1,6 @@
 class Client < ApplicationRecord
+  self.table_name = "CLIENTS"
+
   include DowncaseAttributes
   before_create :set_time_stamps
   before_save :set_time_stamps
@@ -10,8 +12,8 @@ class Client < ApplicationRecord
 
   default_scope -> { includes(:request_status, :bail_status, :case_status) }
 
-  scope :open, -> { where(request_statuses: {request_status: ['New','In Process', 'Approved', 'On Hold']}) }
-  scope :closed, -> { where(bail_statuses: {bail_status: ['Ready for Pickup', 'Returned', 'Outstanding Fee']}) }
+  scope :open, -> { where(REQUEST_STATUSES: {request_status: ['New','In Process', 'Approved', 'On Hold']}) }
+  scope :closed, -> { where(BAIL_STATUSES: {bail_status: ['Ready for Pickup', 'Returned', 'Outstanding Fee']}) }
   scope :dismissed, -> { closed.where("case_disposition LIKE ('%DISMISSED%')") }
   scope :not_dismissed, -> { closed.where("case_disposition NOT LIKE ('%DISMISSED%')") }
 
