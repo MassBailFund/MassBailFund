@@ -61,14 +61,14 @@ class Client < ApplicationRecord
   end
 
   def facility_id(facilities)
-    if facility is Nil
+    if facility.nil?
       return facility
     end
     begin
       Integer(facility)
     rescue ArgumentError
       correct_facility = facilities.find{|listed_facility| facility == listed_facility.name}
-      if correct_facility is Nil
+      if correct_facility.nil?
         return 0
       end
       return correct_facility.id
