@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :client do
     #association :facility
     facility { generate :facility_name }
@@ -28,14 +28,14 @@ FactoryGirl.define do
     gps_required { Faker::Boolean.boolean }
     court { Faker::Company.name }
 
-    open_cases 'N/A'
-    warrants 'N/A'
-    support_person 'N/A'
-    released_upon_posting 'N/A'
-    school 'N/A'
-    employment 'N/A'
-    housing 'N/A'
-    history 'N/A'
-    additional_info 'N/A'
+    open_cases { 'N/A' }
+    warrants { 'N/A' }
+    support_person { 'N/A' }
+    released_upon_posting { 'N/A' }
+    school { 'N/A' }
+    employment { 'N/A' }
+    housing { 'N/A' }
+    history { 'N/A' }
+    additional_info { 'N/A' }
   end
 end

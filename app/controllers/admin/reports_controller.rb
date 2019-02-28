@@ -20,9 +20,8 @@ class Admin::ReportsController < ApplicationController
     authorize! :clients, :report
 
     @monthly_requests = Client.where('TIME_STAMP IS NOT NULL')
-                              .order('TIME_STAMP DESC')
-                              .group('MONTH(TIME_STAMP)')
-                              .group('YEAR(TIME_STAMP)')
+                              .group("EXTRACT(YEAR_MONTH FROM TIME_STAMP)")
+                              .order("EXTRACT(YEAR_MONTH FROM TIME_STAMP) DESC")
                               .count
   end
 
@@ -30,7 +29,7 @@ class Admin::ReportsController < ApplicationController
     authorize! :clients, :report
 
     @yearly_requests = Client.where('TIME_STAMP IS NOT NULL')
-                              .order('TIME_STAMP DESC')
+                              .order('YEAR(TIME_STAMP) DESC')
                               .group('YEAR(TIME_STAMP)')
                               .count
   end

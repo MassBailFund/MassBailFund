@@ -47,9 +47,9 @@ group :development, :test do
 
   gem 'rails-controller-testing'
   gem 'rspec-its'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails'
 
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
 
   gem 'pry-rails'
