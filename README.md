@@ -1,3 +1,5 @@
+<a href="https://codeclimate.com/github/MassBailFund/MassBailFund/maintainability"><img src="https://api.codeclimate.com/v1/badges/c69b231bc1125dea5886/maintainability" /></a>
+
 # Mass Bail Fund
 
 The [Massachusetts Bail Fund](https://www.massbailfund.org/) is committed to the harm reduction of freeing individuals serving pre-trial sentences, and to abolishing pre-trial detention and supervision in the long-term. We pay up to $500 bail so that low-income people can stay free while they work towards resolving their case, allowing individuals, families, and communities to stay productive, together, and stable.
