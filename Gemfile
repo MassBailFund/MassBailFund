@@ -53,6 +53,7 @@ group :development, :test do
   gem 'faker'
 
   gem 'pry-rails'
+  gem 'brakeman'
 
   # Lint code
   gem 'rubocop', require: false
