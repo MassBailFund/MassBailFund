@@ -7,6 +7,7 @@ class Admin::ClientsController < ApplicationController
   before_action :set_locals
 
   def show
+    binding.pry
     if @client.pooled == nil
       @client.pooled = false
     end
@@ -49,9 +50,11 @@ class Admin::ClientsController < ApplicationController
   end
 
   def edit
+    binding.pry
   end
 
   def update
+    binding.pry
     if @client.update_attributes(update_params) && params.keys.include?("save")
       redirect_to action: :show, id: params[:id]
     elsif @client.update_attributes(update_params) && params.keys.include?("save-and-close")
@@ -68,13 +71,10 @@ class Admin::ClientsController < ApplicationController
   end
 
   def export_all
-    print 'foo'
-    binding.pry
-    # clients = @Clients.all
-    # respond_to do |format|
-    #   format.html
-    #   format.csv { send_data clients.to_csv, filename: "clients-#{Date.today}.csv" }
-    # end
+    clients = @clients.all
+    respond_to do |format|
+      format.csv { send_data clients.to_csv, filename: "clients-#{Date.today}.csv" }
+    end
   end
 
   helper_method :set_boolean_to_yesno
