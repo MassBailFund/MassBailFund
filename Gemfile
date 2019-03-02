@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 5.0.2'
+gem 'rails', '~> 5.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
-gem 'bootstrap-sass', '~> 3.3.6'
+gem 'bootstrap-sass', ">= 3.4.1"
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -35,7 +35,8 @@ gem 'sendgrid-ruby'
 
 #Per this post, the version matters for Heroku deployment
 # https://medium.com/@emersonthis/running-rails-with-mysql-on-heroku-4765df033428
-gem 'mysql2', '~> 0.3.18'
+#gem 'mysql2', '~> 0.3.18'
+gem 'mysql2'
 
 # generate entity relationship diagrams
 gem 'rails-erd', require: false, group: :erd
@@ -46,9 +47,9 @@ group :development, :test do
 
   gem 'rails-controller-testing'
   gem 'rspec-its'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails'
 
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
 
   gem 'pry-rails'

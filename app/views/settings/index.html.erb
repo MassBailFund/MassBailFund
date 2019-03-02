@@ -28,7 +28,7 @@
     <h4>Create new user</h5>
     <div class='small alert alert-warning'>
       Be sure to save the password you pick!
-      You will need to send it them in order for them to log in.
+      You will need to send it to the new user in order for them to log in.
     </div>
     <%= simple_form_for @new_user, method: :post, url: admin_create_user_path do |f| %>
       <%= f.input :email %>

@@ -51,6 +51,6 @@ User.create!([
 ])
 
 Setting.create!([
-  {name: "New referral from address"},
-  {name: "New referral to address"}
-  ])
+  {name: "New referral from address", value: "referrals@massbailfund.org"},
+  {name: "New referral to address", value: "referrals@massbailfund.org"}
+])

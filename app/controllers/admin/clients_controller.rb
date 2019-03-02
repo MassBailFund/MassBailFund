@@ -21,7 +21,7 @@ class Admin::ClientsController < ApplicationController
     # filtering and ordering
     params[:scope]&.split(',')&.each do |scope|
       if scope == 'open'
-        @clients = @clients.where("clients.REQUEST_STATUS_ID IN (1, 2)  OR (clients.REQUEST_STATUS_ID = 3  AND (clients.BAIL_STATUS_ID = 4 OR clients.BAIL_STATUS_ID = 1))")
+        @clients = @clients.where("CLIENTS.REQUEST_STATUS_ID IN (1, 2)  OR (CLIENTS.REQUEST_STATUS_ID = 3  AND (CLIENTS.BAIL_STATUS_ID = 4 OR CLIENTS.BAIL_STATUS_ID = 1))")
       elsif scope == 'dismissed'
         @clients = @clients.dismissed
       end

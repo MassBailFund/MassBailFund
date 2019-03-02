@@ -9,7 +9,7 @@ describe ClientsController do
   end
 
   describe '#create' do
-    let!(:client_attributes) { FactoryGirl.attributes_for(:client) }
+    let!(:client_attributes) { FactoryBot.attributes_for(:client) }
 
     def go!
       post 'create', params: { client: client_attributes }
