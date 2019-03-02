@@ -7,7 +7,6 @@ class Admin::ClientsController < ApplicationController
   before_action :set_locals
 
   def show
-    binding.pry
     if @client.pooled == nil
       @client.pooled = false
     end
@@ -50,11 +49,9 @@ class Admin::ClientsController < ApplicationController
   end
 
   def edit
-    binding.pry
   end
 
   def update
-    binding.pry
     if @client.update_attributes(update_params) && params.keys.include?("save")
       redirect_to action: :show, id: params[:id]
     elsif @client.update_attributes(update_params) && params.keys.include?("save-and-close")
