@@ -1,5 +1,6 @@
 class Client < ApplicationRecord
   self.table_name = "CLIENTS"
+  require 'csv'
 
   include DowncaseAttributes
   before_create :set_time_stamps
@@ -102,6 +103,16 @@ class Client < ApplicationRecord
 
   def case_status_type
     case_status&.case_status
+  end
+
+  def self.to_csv(options = {})
+    CSV.generate(options) do |csv|
+      csv << column_names
+      all.each do |client|
+        values = client.attributes.values
+        csv.add_row values
+      end
+    end
   end
 
   private
