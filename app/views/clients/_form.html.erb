@@ -50,7 +50,7 @@
       <%= f.input :gps_required, label: '* GPS Required?', as: :select, prompt: :translate %>
       <%= f.input :court %>
 
-      <%= f.input :facility, as: :select, collection: @facilities, prompt: :translate %>
+      <%= f.input :facility, as: :select, collection: @facilities, value_method: :name, prompt: :translate %>
 
       <%= f.input :open_cases, as: :text %>
       <%= f.input :warrants, as: :text %>
