@@ -17,6 +17,9 @@ Facility.create!([
   {name: 'Plymouth County House of Correction'}
   ])
 
+Court.create([
+])
+
 RequestStatus.create!([
   {request_status: 'New'},
   {request_status: 'In Process'},

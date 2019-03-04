@@ -11,6 +11,7 @@ class Admin::ClientsController < ApplicationController
       @client.pooled = false
     end
     @facilities = Facility.all
+    @courts = Court.all
     render :edit
   end
 
@@ -98,6 +99,7 @@ class Admin::ClientsController < ApplicationController
 
   def set_locals
     @facilities = Facility.all
+    @courts = Court.all
     @case_statuses = CaseStatus.all
     @request_statuses = RequestStatus.all
     @bail_statuses = BailStatus.all
