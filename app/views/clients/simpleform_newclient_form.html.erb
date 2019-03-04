@@ -48,8 +48,8 @@
       </div>
       <%= f.input :bail_amount, as: :integer, html5: true %>
       <%= f.input :gps_required, label: '* GPS Required?', as: :select, prompt: :translate %>
-      <%= f.input :court %>
 
+      <%= f.input :court, as: :select, collection: @courts, value_method: :name, prompt: :translate %>
       <%= f.input :facility, as: :select, collection: @facilities, value_method: :name, prompt: :translate %>
 
       <%= f.input :open_cases, as: :text %>
