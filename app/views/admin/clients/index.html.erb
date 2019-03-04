@@ -18,7 +18,7 @@
           <td><%= client.request_status_type %></td>
           <td><%= client.bail_status_type(@bail_statuses) %></td>
           <td>$<%= client.bail_amount %></td>
-          <td><%= @facilities.find{|fac| client.FACILITY.to_i == fac.id}.nil? ? '--' : @facilities.find{|fac| client.FACILITY.to_i == fac.id}.name %></td>
+          <td><%= client.FACILITY %></td>
           <td><%= client.docket %></td>
           <td><%= client.court %></td>
         </tr>
