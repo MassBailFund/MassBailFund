@@ -2,7 +2,7 @@
 # Public facing form to create Clients.
 #
 class ClientsController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:create]
+  skip_before_action :verify_authenticity_token, :only => [:create, :new]
   load_and_authorize_resource
 
   before_action :load_facilities, only: [:new, :create]
