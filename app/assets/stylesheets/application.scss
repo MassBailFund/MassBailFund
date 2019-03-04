@@ -14,6 +14,21 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.alert-notice {
+  // notice is common among rails applications
+  @extend .alert-info;
+}
+
+.alert-alert {
+  // used by at least activeadmin and devise
+  @extend .alert-warning;
+}
+
+.alert-error {
+  // set by activeadmin
+  @extend .alert-danger;
+}
+
 /* To accommodate for navbar */
 body { padding-top: 50px; }
 
