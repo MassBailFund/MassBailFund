@@ -21,7 +21,6 @@ class Admin::ReportsController < ApplicationController
 
     @monthly_requests = Client.where('TIME_STAMP IS NOT NULL')
                               .group("EXTRACT(YEAR_MONTH FROM TIME_STAMP)")
-                              .group('YEAR(TIME_STAMP)')
                               .order("EXTRACT(YEAR_MONTH FROM TIME_STAMP) DESC")
                               .count
   end
