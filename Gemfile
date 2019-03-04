@@ -58,7 +58,6 @@ group :development, :test do
   # Lint code
   gem 'rubocop', require: false
   # Check for gems with CVEs
-  gem 'bundler-audit', require: false
 end
 
 group :development do
