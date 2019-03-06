@@ -10,8 +10,12 @@ class Ability
     can [:new, :create], Client
 
     if user.present?
-      # This should be admin only
-      can :manage, :all
+      can :manage, Client
+      can :manage, :reports
+
+      if user.admin?
+        can :manage, :all
+      end
     end
   end
 end
