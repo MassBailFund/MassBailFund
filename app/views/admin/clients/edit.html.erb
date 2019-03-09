@@ -134,7 +134,7 @@
         <dt>GPS Required</dt>
         <dd><%= set_boolean_to_yesno(@client.gps_required) %></dd>
         <dt>Court Where Charged</dt>
-        <dd><%= @client.court %></dd>
+        <dd><%= @client.court_name(@courts) %></dd>
         <dt>Facility Where Held</dt>
         <dd><%= @client.facility_name(@facilities) %></dd>
       </dt>
