@@ -38,7 +38,10 @@ $navbar-inverse-toggle-border-color: transparent;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-body { padding-top: $navbar-height + $navbar-margin-bottom; }
+body { 
+  padding-top: $navbar-height + $navbar-margin-bottom; 
+  margin-bottom: 10px;
+}
 
 /* We don't want listing tables to wrap, and we want them to take the full width */
 table.listing td {
