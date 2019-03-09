@@ -64,7 +64,7 @@
           <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-body">
-                <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#addAttachment">Add</button>
+                <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#addAttachment">Add</button>
                 <% if @client.attachment.present? %>
                   <%= link_to @client.attachment.filename, admin_attachment_path(@client.attachment), target: :blank %>
                 <% else %>
@@ -84,7 +84,7 @@
         <div class="panel-heading">
           <h3 class="panel-title">
             Attorney
-            <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#editAttorney">Edit</button>
+            <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#editAttorney">Edit</button>
           </h3>
         </div>
         <div class="panel-body">
@@ -99,7 +99,7 @@
       <div class="panel-heading">
         <h3 class="panel-title">
           Client
-          <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#editClient">Edit</button>
+          <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#editClient">Edit</button>
         </h3>
       </div>
       <div class="panel-body">
@@ -116,7 +116,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">
         Case
-        <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#editCase">Edit</button>
+        <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#editCase">Edit</button>
       </h3>
     </div>
     <div class="panel-body">
@@ -145,7 +145,7 @@
     <div class="panel-heading">
       <h3 class="panel-title">
         Details
-        <button type="button" class="btn btn-xs pull-right" data-toggle="modal" data-target="#editNotes">Edit</button>
+        <button type="button" class="btn btn-default btn-xs pull-right" data-toggle="modal" data-target="#editNotes">Edit</button>
       </h3>
     </div>
     <div class="panel-body">
