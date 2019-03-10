@@ -12,6 +12,16 @@ Anyone at any experience level who wants to contribute is welcome! We have [open
 
 Once you have cloned down the repo and gotten everything working locally, the flow would be to create a new feature branch for your issue, write tests covering any new code, and make a pull request. We'll try to review them in a timely fashion, but feel free to tag the current maintainer (RSid) if you've waited more than 2 weeks for a response.
 
+## Setup
+1. Clone down repo
+1. Download and install mysql
+1. I'd advise using a ruby version manager such as chruby, and make sure that you're using >= ruby 2.3. Run `bundle install`.
+1. Run `rake db:migrate`. 
+1. Set environment variable `MA_BAIL_USER_PASSWORD` with your desired password for your local admin user. You may also wish to alter the username in seed.rb.
+1. Run `rake db:seed`. 
+1. Check to see that all tests are passing with `rspec spec`.
+1. Run the site with `rails s`, then go to localhost:3000 to see if it works!
+
 ## Important Dependencies
 
 Tool                | Description
