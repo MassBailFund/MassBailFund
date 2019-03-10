@@ -3,7 +3,6 @@
 <div class="row">
   <div class="col-md-6">
     <h4> Existing users </h5>
-      Contact tech admin to delete user
     <table>
       <thead>
         <tr>
@@ -13,6 +12,7 @@
         <% @users.each do |user| %>
           <tr>
             <td><%= user.email %></td>
+            <td><%= link_to('delete user', admin_destroy_user_path(user.id), method: :delete) %></td>
           </tr>
         <% end %>
       </tbody>
