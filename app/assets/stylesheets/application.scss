@@ -11,42 +11,36 @@
  * It is generally better to create a new file per style scope.
  */
 
+$navbar-inverse-bg: #262;
+$navbar-inverse-link-color: #fff;
+$navbar-inverse-link-active-bg: #484;
+$navbar-inverse-link-hover-bg: #373;
+
+.alert-notice {
+  // notice is common among rails applications
+  @extend .alert-info;
+}
+
+.alert-alert {
+  // used by at least activeadmin and devise
+  @extend .alert-warning;
+}
+
+.alert-error {
+  // set by activeadmin
+  @extend .alert-danger;
+}
+
+$navbar-inverse-toggle-active-bg: $navbar-inverse-link-active-bg;
+$navbar-inverse-toggle-hover-bg: $navbar-inverse-link-hover-bg;
+$navbar-inverse-toggle-border-color: transparent;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* To accommodate for navbar */
-body { padding-top: 50px; }
-
-/* Green branding of navbar */
-.navbar-inverse {
-  background-color: #262;
-}
-.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
-  background-color: #484;
-}
-.navbar-inverse .navbar-nav > li > a:hover,
-.navbar-inverse .navbar-nav > li > a:focus {
-  background-color: #373;
-}
-.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-brand {
-  color: #fff;
-}
-
-/* Navbar flush against breadcrumbs */
-.navbar {
-  border: 0px;
-  margin-bottom: 0;
-}
-
-/* Invert the breadcrumb color scheme */
-.breadcrumb {
-  background-color: #484;
-  box-shadow: 0px 6px 20px rgba(1, 1, 1, .25);
-  border-radius: 0;
-}
-
-.breadcrumb a, .breadcrumb li.active {
-  color: white;
+body { 
+  padding-top: $navbar-height + $navbar-margin-bottom; 
+  margin-bottom: 10px;
 }
 
 /* We don't want listing tables to wrap, and we want them to take the full width */
