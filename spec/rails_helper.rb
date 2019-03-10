@@ -62,6 +62,11 @@ RSpec.configure do |config|
       {case_status: 'Open'},
       {case_status: 'Closed'}
       ])
+
+    Setting.create!([
+      {name: "New referral from address", value: "referrals@massbailfund.org"},
+      {name: "New referral to address", value: "referrals@massbailfund.org"}
+    ])
   }
 
   # Include Devise test helpers
