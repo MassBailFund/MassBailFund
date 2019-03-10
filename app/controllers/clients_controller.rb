@@ -2,7 +2,7 @@
 # Public facing form to create Clients.
 #
 class ClientsController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:create]
+  skip_before_action :verify_authenticity_token, :only => [:create, :new]
   load_and_authorize_resource
 
   before_action :load_facilities, only: [:new, :create]
@@ -29,7 +29,7 @@ class ClientsController < ApplicationController
   end
 
   def create_params
-    params.require(:client).permit(client_param_names)
+    params.permit(client_param_names)
   end
 
   def client_param_names
@@ -41,7 +41,7 @@ class ClientsController < ApplicationController
       attorney_email attorney_name attorney_phone attorney_address
       client_dob client_email client_name client_phone client_address
       reference_relationship reference_email reference_name
-      reference_phone reference_address
+      reference_phone reference_address client_race
     )
   end
 end

@@ -11,10 +11,13 @@
   </head>
 
   <body>
+    <% unless controller.controller_name == "clients" && controller.action_name == "new" %>
     <%= render partial: 'layouts/navbar' %>
+    <% end %>
     <div class="container-fluid">
 
       <% flash.each do |key, value| %>
+        <% next unless value.is_a? String %>
         <div class="alert alert-<%= key %>"><%= value %></div>
       <% end %>
 

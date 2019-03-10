@@ -15,7 +15,8 @@ class SettingsController < ApplicationController
   def update
     respond_to do |format|
       if @setting.update_attributes(setting_params.permit(:value))
-        format.html { redirect_to action: :index, notice: 'Setting was successfully updated.' }
+        flash[:notice] = 'Setting was successfully updated.'
+        format.html { redirect_to action: :index }
       else
         format.html { redirect_to action: :index }
         format.json { render json: @setting.errors, status: :unprocessable_entity }

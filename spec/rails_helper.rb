@@ -30,11 +30,39 @@ ActiveRecord::Migration.maintain_test_schema!
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  config.include FactoryBot::Syntax::Methods
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+
+  config.before(:suite) {
+    RequestStatus.create!([
+      {request_status: 'New'},
+      {request_status: 'In Process'},
+      {request_status: 'Approved'},
+      {request_status: 'On Hold'},
+      {request_status: 'Denied'},
+      {request_status: 'Withdrawn'},
+      ])
+
+    BailStatus.create!([
+      {bail_status: 'None'},
+      {bail_status: 'Posted'},
+      {bail_status: 'Returned'},
+      {bail_status: 'Ready For Pickup'},
+      {bail_status: 'Outstanding Fee'},
+      {bail_status: 'Forfeited'},
+      {bail_status: 'Revoked'},
+      {bail_status: 'Warrant'}
+      ])
+
+    CaseStatus.create!([
+      {case_status: 'Open'},
+      {case_status: 'Closed'}
+      ])
+  }
 
   # Include Devise test helpers
   config.include Devise::Test::ControllerHelpers, type: :controller

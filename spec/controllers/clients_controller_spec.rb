@@ -12,7 +12,7 @@ describe ClientsController do
     let!(:client_attributes) { FactoryBot.attributes_for(:client) }
 
     def go!
-      post 'create', params: { client: client_attributes }
+      post 'create', params: client_attributes
     end
 
     it 'creates expected Client' do
