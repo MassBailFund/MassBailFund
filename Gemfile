@@ -33,6 +33,8 @@ gem 'simple_form'
 
 gem 'sendgrid-ruby'
 
+gem 'rack-cors', require: 'rack/cors'
+
 #Per this post, the version matters for Heroku deployment
 # https://medium.com/@emersonthis/running-rails-with-mysql-on-heroku-4765df033428
 #gem 'mysql2', '~> 0.3.18'
@@ -58,7 +60,6 @@ group :development, :test do
   # Lint code
   gem 'rubocop', require: false
   # Check for gems with CVEs
-  gem 'bundler-audit', require: false
 end
 
 group :development do

@@ -1,0 +1,70 @@
+<%= simple_form_for @client do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <div>
+        <h3>Attorney</h3>
+
+        <%= f.input :attorney_name %>
+        <%= f.input :attorney_email %>
+        <%= f.input :attorney_phone %>
+        <%= f.input :attorney_address %>
+      </div>
+
+      <div>
+        <h3>Defendant</h3>
+
+        <%= f.input :client_name %>
+        <%= f.input :client_email %>
+        <%= f.input :client_phone %>
+        <%= f.input :client_address %>
+        <%= f.input :client_dob, as: :date, html5: true %>
+      </div>
+
+      <div>
+        <h3>Reference</h3>
+
+        <p><%= t('case_detail.reference.description') %></p>
+
+        <%= f.input :reference_name %>
+        <%# for some reason email is not included here %>
+        <%= f.input :reference_phone %>
+        <%= f.input :reference_address %>
+        <%= f.input :reference_relationship %>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <h3>Case Information</h3>
+
+      <%= f.input :docket %>
+      <%= f.input :charges %>
+      <div class="row">
+        <div class="col-sm-6">
+          <%= f.input :arraignment_date, as: :date, html5: true %>
+        </div>
+        <div class="col-sm-6">
+          <%= f.input :appearance_date, as: :date, html5: true %>
+        </div>
+      </div>
+      <%= f.input :bail_amount, as: :integer, html5: true %>
+      <%= f.input :gps_required, label: '* GPS Required?', as: :select, prompt: :translate %>
+      <%= f.input :court %>
+
+      <%= f.input :facility, as: :select, collection: @facilities, value_method: :name, prompt: :translate %>
+
+      <%= f.input :open_cases, as: :text %>
+      <%= f.input :warrants, as: :text %>
+      <%= f.input :support_person, as: :text %>
+      <%= f.input :released_upon_posting, as: :text %>
+      <%= f.input :school, as: :text %>
+      <%= f.input :employment, as: :text %>
+      <%= f.input :housing, as: :text %>
+      <%= f.input :history, as: :text %>
+      <%= f.input :additional_info, as: :text %>
+    </div>
+  </div>
+
+  <div class="text-center">
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

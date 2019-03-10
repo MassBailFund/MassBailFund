@@ -13,10 +13,10 @@
 </thead>
 <tbody>
   <% @monthly_requests.each do |timestamp_key, count| %>
-    <tr onclick="location.href='<%= admin_clients_path(created_month: timestamp_key[0], created_year: timestamp_key[1]) %>'">
+    <tr onclick="location.href='<%= admin_clients_path(created_month: timestamp_key.to_s.from(4).to_i, created_year: timestamp_key.to_s[0...4].to_i) %>'">
       <td><%= count %></td>
-      <td><%= Date::MONTHNAMES[timestamp_key[0]] %> </td>
-      <td><%= timestamp_key[1] %></td>
+      <td><%= Date::MONTHNAMES[timestamp_key.to_s.from(4).to_i] %> </td>
+      <td><%= timestamp_key.to_s[0...4] %></td>
     </tr>
   <% end %>
 </tbody>

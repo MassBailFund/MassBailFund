@@ -1,70 +1,213 @@
-<%= simple_form_for @client do |f| %>
-  <div class="row">
-    <div class="col-md-4">
-      <div>
-        <h3>Attorney</h3>
+<!-- For the moment, the bail fund maintainers would prefer to continue using the
+basic html form that is part of the weebly site and that integrated with the old PHP site
+as such, I've replaced our simpleform implementation for the moment so that we're developing against a form
+that better resembles production. Ideally, we'll reintroduce the simpleform page in the near term -->
 
-        <%= f.input :attorney_name %>
-        <%= f.input :attorney_email %>
-        <%= f.input :attorney_phone %>
-        <%= f.input :attorney_address %>
-      </div>
+<form id="referral_form" action="/clients" method="post">
 
-      <div>
-        <h3>Defendant</h3>
+    <!-- Attorney information -->
 
-        <%= f.input :client_name %>
-        <%= f.input :client_email %>
-        <%= f.input :client_phone %>
-        <%= f.input :client_address %>
-        <%= f.input :client_dob, as: :date, html5: true %>
-      </div>
+    <fieldset>
+    <legend>Attorney Information</legend>
+    <p>
+      <label for="attorney_name">Attorney Name <span class="required">*</span></label>
+      <input type="text" name="attorney_name" id="attorney_name" required>
+    </p>
+    <p>
+      <label for="attorney_email">Attorney Email <span class="required">*</span></label>
+      <input type="text" name="attorney_email" id="attorney_email" required>
+    </p>
+    <p>
+      <label for="attorney_phone">Attorney Phone Number <span class="required">*</span></label>
+      <input type="text" name="attorney_phone" id="attorney_phone" required>
+    </p>
+    <p>
+      <label for="attorney_address">Attorney Mailing Address <span class="required">*</span></label>
+      <input type="text" name="attorney_address" id="attorney_address" required>
+    </p>
+    </fieldset>
 
-      <div>
-        <h3>Reference</h3>
+    <!-- Defendant information -->
 
-        <p><%= t('case_detail.reference.description') %></p>
+    <fieldset>
+    <legend>Defendant Information</legend>
+    <p>
+      <label for="client_name">Defendant Name <span class="required">*</span></label>
+      <input type="text" name="client_name" id="client_name" required>
+    </p>
+    <p>
+      <label for="client_phone">Defendant Phone Number <span class="required">*</span>
+      <span class="hint">If the defendant does not have a telephone number, please put "n/a."</span>
+      </label>
+      <input type="text" name="client_phone" id="client_phone" required>
+    </p>
+    <p>
+      <label for="client_address">Defendant Address <span class="required">*</span>
+      <span class="hint">If the defendant does not have an address, please put "n/a."</span>
+      </label>
+      <input type="text" name="client_address" id="client_address" required>
+    </p>
+    <p>
+      <label for="client_email">Defendant Email <span class="required">*</span>
+      <span class="hint">If the defendant does not have an email address, please put "n/a."</span>
+      </label>
+      <input type="text" name="client_email" id="client_email" required />
+    </p>
+    <p>
+      <label for="client_dob">Defendant Date of Birth (MM/DD/YYYY) <span class="required">*</span></label>
+      <input type="text" name="client_dob" id="client_dob" required />
+    </p>
+    <p>
+      <label for="client_race">Defendant's Race <span class="required">*</span>
+      <span class="hint">
+        The Massachusetts Bail Fund recognizes the criminal justice system is racist.
+        We collect race data about the people we serve to ensure that our impact
+        counteracts these racial disparities rather than contributes to them. Please
+        share the way your client describes their race.
+      </span>
+      </label>
+      <input type="text" name="client_race" id="client_race" required />
+    </p>
+    </fieldset>
 
-        <%= f.input :reference_name %>
-        <%# for some reason email is not included here %>
-        <%= f.input :reference_phone %>
-        <%= f.input :reference_address %>
-        <%= f.input :reference_relationship %>
-      </div>
-    </div>
+    <!-- Reference information -->
 
-    <div class="col-md-8">
-      <h3>Case Information</h3>
+    <fieldset>
+    <legend>Reference/Ride Information</legend>
+    <div class="hint">
+      If your client is NOT held at one of the Suffolk County facilities, the Middleton House of Correction or the Billerica House of Correction, please specify who can give your client a ride from the jail or house of corrections when bail is posted.  Please include contact information here.  If your client does not have someone who can give them a ride, please note this here and be sure to include WHERE your client needs to be taken once bail is posted.  We can, at times, provide transportation, but need notice and time to arrange transportation.  </div>
+    <p>
+      <label for="reference_name">Reference Name <span class="required">*</span></label>
+      <input type="text" name="reference_name" id="reference_name" required>
+    </p>
+    <p>
+      <label for="reference_relationship">Reference Relationship <span class="required">*</span></label>
+      <input type="text" name="reference_relationship" id="reference_relationship" required>
+    </p>
+    <p>
+      <label for="reference_phone">Reference Phone <span class="required">*</span></label>
+      <input type="text" name="reference_phone" id="reference_phone" required>
+    </p>
+    <p>
+      <label for="reference_address">Reference Address <span class="required">*</span></label>
+      <input type="text" name="reference_address" id="reference_address" required>
+    </p>
+    </fieldset>
+    <fieldset>
 
-      <%= f.input :docket %>
-      <%= f.input :charges %>
-      <div class="row">
-        <div class="col-sm-6">
-          <%= f.input :arraignment_date, as: :date, html5: true %>
-        </div>
-        <div class="col-sm-6">
-          <%= f.input :appearance_date, as: :date, html5: true %>
-        </div>
-      </div>
-      <%= f.input :bail_amount, as: :integer, html5: true %>
-      <%= f.input :gps_required, label: '* GPS Required?', as: :select, prompt: :translate %>
-      <%= f.input :court %>
+    <!-- Case information -->
 
-      <%= f.input :facility, as: :select, collection: @facilities, prompt: :translate %>
+    <legend>Case Information</legend>
+    <p>
+      <label for="docket">Docket Number <span class="required">*</span></label>
+      <input type="text" name="docket" id="docket" required>
+    </p>
+    <p>
+      <label for="charges">Charges <span class="required">*</span></label>
+      <input type="text" name="charges" id="charges" required>
+    </p>
+    <p>
+      <label for="arraignment_date">Date of Arraignment (MM/DD/YYYY) <span class="required">*</span></label>
+      <input type="text" name="arraignment_date" id="arraignment_date" required>
+    </p>
+    <p>
+      <label for="appearance_date">Date of Next Scheduled Appearance (MM/DD/YYYY) <span class="required">*</span></label>
+      <input type="text" name="appearance_date" id="appearance_date" required>
+    </p>
+    <p>
+      <label for="bail_amount">Bail Amount <span class="required">*</span></label>
+      <input type="text" name="bail_amount" id="bail_amount" required>
+    </p>
+    <p>
+      <label for="gps_required">Electronic Monitoring Required (GPS, SCRAM, etc.)<span class="required">*</span><span class="hint">We can only post bails where EM is an additional condition of release when: 1.We have confirmation from the person's attorney (or the court) that the person is on the transport list for the day our volunteer can be in court. AND 2. We have confirmation from the person's attorney (or the court or probation department) that there is an EM unit available on that date as well. NOTE: This policy does not apply to people whose cases originate out of Middlesex County AND are held pre-trial at the Billerica House of Corrections.  </span>
+      </label>
+      <select name="gps_required" id="gps_required" required>
+        <option value=""></option>
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+    </p>
+    <p>
+      <label for="court">Court Where Charged <span class="required">*</span></label>
+      <input type="text" name="court" id="court" required>
+    </p>
+    <p>
+      <label for="facility">Facility Where Held <span class="required">*</span>
+      <span class="hint">Please specify the jail where your client is being held.  If your client is held anywhere BUT Nashua Street Jail or South Bay House of Correction, your client will need a ride from the facility before the Bail Fund can post bail.  We can generally assist with rides, but it is always preferable for transportation to be provided by someone who knows the person being bailed.  Please specify in the additional information field below who will be available to give your client a ride.</span>
+      </label>
+      <select name="facility" required>
 
-      <%= f.input :open_cases, as: :text %>
-      <%= f.input :warrants, as: :text %>
-      <%= f.input :support_person, as: :text %>
-      <%= f.input :released_upon_posting, as: :text %>
-      <%= f.input :school, as: :text %>
-      <%= f.input :employment, as: :text %>
-      <%= f.input :housing, as: :text %>
-      <%= f.input :history, as: :text %>
-      <%= f.input :additional_info, as: :text %>
-    </div>
-  </div>
+        <option value="Ash Street Jail">Ash Street Jail</option>
+        <option value="Barnstable County Jail and House of Correction">Barnstable County Jail and House of Correction</option>
+  <option value="Billerica House of Correction">Billerica House of Correction</option>
+        <option value="Bristol County Jail and House of Correction">Bristol County Jail and House of
+         Correction</option>
+        <option value="Hampden County Jail">Hampden County Jail</option>
+  <option value="Hampden County House of Correction">Hampden County House of Correction</option>
+        <option value="Hampshire County House of Correction">Hampshire County House of Correction</option><option value="Franklin County Jail">Franklin County Jail</option>
+  <option value="MCI-Framingham">MCI-Framingham</option>
+        <option value="Middleton House of Correction">Middleton House of Correction</option>
+  <option value="Nashua Street Jail">Nashua Street Jail</option>
+        <option value="Norfolk County Correctional Center">Norfolk County Correctional Center</option>
+  <option value="Plymouth County House of Correction">Plymouth County House of Correction</option>
+        <option value="South Bay House of Correction">South Bay House of Correction</option>
+        <option value="Western Mass. Regional Women's Correctional Center">Western Mass. Regional Women's
+         Correctional Center</option>
+        <option value="Worcester County House of Correction">Worcester County House of
+         Correction</option>
 
-  <div class="text-center">
-    <%= f.button :submit, class: 'btn btn-primary' %>
-  </div>
-<% end %>
+
+
+
+        </select>
+    </p>
+
+    <p>
+      <label for="open_cases">Does the defendant have other open cases, if so, how many and where are they? <span class="required">*</span></label>
+      <textarea name="open_cases" id="open_cases" required></textarea>
+    </p>
+
+    <p>
+      <label for="warrants">Does the defendant have any outstanding warrants? <span class="required">*</span></label>
+      <textarea name="warrants" id="warrants" required></textarea>
+    </p>
+
+    <p>
+      <label for="support_person">Was there a support person present at the defendant's arraignment? <span class="required">*</span></label>
+      <textarea name="support_person" id="support_person" required></textarea>
+    </p>
+
+    <p>
+      <label for="released_upon_posting">Will the defendant be released from custody upon the posting of bail? <span class="required">*</span></label>
+      <textarea name="released_upon_posting" id="released_upon_posting" required></textarea>
+    </p>
+
+    <p>
+      <label for="school">Is the defendant in school/vocational/training program? <span class="required">*</span></label>
+      <textarea name="school" id="school" required></textarea>
+    </p>
+
+    <p>
+      <label for="employment">Is the defendant employed? <span class="required">*</span></label>
+      <textarea name="employment" id="employment" required></textarea>
+    </p>
+
+    <p>
+      <label for="housing">Is the defendant homeless/precariously housed? <span class="required">*</span></label>
+      <textarea name="housing" id="housing" required></textarea>
+    </p>
+
+    <p>
+      <label for="history">What does the defendant's history of defaulting/failing to appear look like? Please note, a history of defaults, no matter how many, is not a barrier to our assistance.  We are a charge, court history, and circumstance neutral organization.<span class="required">*</span></label>
+      <textarea name="history" id="history" required></textarea>
+    </p>
+
+    <p>
+      <label for="additional_info">Please tell us why your client should receive assistance from the Bail Fund:<span class="required">*</span></label>
+      <textarea name="additional_info" id="additional_info" required></textarea>
+    </p>
+
+    </fieldset>
+
+    <input type="submit" value="Submit" style="width: auto; padding: .2em">
+  </form>
