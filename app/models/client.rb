@@ -117,7 +117,7 @@ class Client < ApplicationRecord
 
   private
     def set_time_stamps
-      self.TIME_STAMP = DateTime.now if self.new_record?
-      self.TIME_STAMP = DateTime.now
+      self.TIME_STAMP ||= DateTime.now if self.new_record?
+      self.TIME_STAMP ||= DateTime.now
     end
 end
