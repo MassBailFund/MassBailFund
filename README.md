@@ -1,8 +1,4 @@
-<a href="https://codeclimate.com/github/MassBailFund/MassBailFund/maintainability"><img src="https://api.codeclimate.com/v1/badges/c69b231bc1125dea5886/maintainability" /></a>
-
-[![Build Status](https://travis-ci.org/MassBailFund/MassBailFund.svg?branch=master)](https://travis-ci.org/MassBailFund/MassBailFund)
-
-[![Coverage Status](https://coveralls.io/repos/github/MassBailFund/MassBailFund/badge.svg?branch=master)](https://coveralls.io/github/MassBailFund/MassBailFund?branch=master)
+<a href="https://codeclimate.com/github/MassBailFund/MassBailFund/maintainability"><img src="https://api.codeclimate.com/v1/badges/c69b231bc1125dea5886/maintainability" /></a> [![Build Status](https://travis-ci.org/MassBailFund/MassBailFund.svg?branch=master)](https://travis-ci.org/MassBailFund/MassBailFund) [![Coverage Status](https://coveralls.io/repos/github/MassBailFund/MassBailFund/badge.svg?branch=master)](https://coveralls.io/github/MassBailFund/MassBailFund?branch=master)
 
 # Mass Bail Fund
 
