@@ -35,6 +35,8 @@ gem 'sendgrid-ruby'
 
 gem 'rack-cors', require: 'rack/cors'
 
+gem 'coveralls', require: false
+
 #Per this post, the version matters for Heroku deployment
 # https://medium.com/@emersonthis/running-rails-with-mysql-on-heroku-4765df033428
 #gem 'mysql2', '~> 0.3.18'
