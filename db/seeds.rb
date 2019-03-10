@@ -43,8 +43,11 @@ CaseStatus.create!([
   ])
 
 User.create!([
-  {email: "alla@test.com", password: ENV["MA_BAIL_USER_PASSWORD"],
+  {
+    email: "alla@test.com",
+    password: ENV["MA_BAIL_USER_PASSWORD"],
     password_confirmation: ENV["MA_BAIL_USER_PASSWORD"],
+    admin: true,
     reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil,
     sign_in_count: 1, current_sign_in_at: "2015-02-06 14:02:10", last_sign_in_at: "2015-02-06 14:02:10",
     current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1", confirmed_at: Time.now.utc}
