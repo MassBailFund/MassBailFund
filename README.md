@@ -15,10 +15,9 @@ Once you have cloned down the repo and gotten everything working locally, the fl
 ## Setup
 1. Clone down repo
 1. Download and install mysql
+1. Download and install node (execjs depends on it)
 1. I'd advise using a ruby version manager such as chruby, and make sure that you're using >= ruby 2.3. Run `bundle install`.
-1. Run `rake db:migrate`. 
-1. Set environment variable `MA_BAIL_USER_PASSWORD` with your desired password for your local admin user. You may also wish to alter the username in seed.rb.
-1. Run `rake db:seed`. 
+1. Run `MA_BAIL_USER_PASSWORD=[your desired user password here] rails db:reset` You may also wish to alter the username associated with that user in seed.rb.
 1. Check to see that all tests are passing with `rspec spec`.
 1. Run the site with `rails s`, then go to localhost:3000 to see if it works!
 
