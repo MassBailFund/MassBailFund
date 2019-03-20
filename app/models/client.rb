@@ -77,6 +77,32 @@ class Client < ApplicationRecord
     return Integer(facility)
   end
 
+  def court_name(courts)
+    begin
+      Integer(court)
+    rescue ArgumentError
+      return court
+    end
+    correct_court = courts.find{|listed_court| Integer(court) == listed_court.id}
+    return correct_court.name
+  end
+
+  def court_id(courts)
+    if court.nil?
+      return court
+    end
+    begin
+      Integer(court)
+    rescue ArgumentError
+      correct_court = courts.find{|listed_court| court == listed_court.name}
+      if correct_court.nil?
+        return nil
+      end
+      return correct_court.id
+    end
+    return Integer(court)
+  end
+
   def gps_required_string()
     return set_boolean_to_yesno(gps_required)
   end

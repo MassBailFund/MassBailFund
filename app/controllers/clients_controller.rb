@@ -6,6 +6,7 @@ class ClientsController < ApplicationController
   load_and_authorize_resource
 
   before_action :load_facilities, only: [:new, :create]
+  before_action :load_courts, only: [:new, :create]
 
   def new
   end
@@ -26,6 +27,10 @@ class ClientsController < ApplicationController
 
   def load_facilities
     @facilities = Facility.all
+  end
+
+  def load_courts
+    @courts = Court.all
   end
 
   def create_params

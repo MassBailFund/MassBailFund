@@ -19,8 +19,7 @@
 
           <%= f.input :gps_required, as: :select, include_blank: false, wrapper: :horizontal_form %>
 
-          <%= f.input :court, wrapper: :horizontal_form %>
-
+          <%= f.input :court, as: :select, collection: @courts, value_method: :name, prompt: :translate, wrapper: :horizontal_form, selected: @client.court_id(@courts) %>
           <%= f.input :facility, as: :select, collection: @facilities, value_method: :name, prompt: :translate, wrapper: :horizontal_form, selected: @client.facility_id(@facilities) %>
         </div>
         <div class="modal-footer">
