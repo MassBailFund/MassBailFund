@@ -12,6 +12,12 @@ Anyone at any experience level who wants to contribute is welcome! We have [open
 
 Once you have cloned down the repo and gotten everything working locally, the flow would be to create a new feature branch for your issue, write tests covering any new code, and make a pull request. We'll try to review them in a timely fashion, but feel free to tag the current maintainer (RSid) if you've waited more than 2 weeks for a response.
 
+We could specifically use: 
+* regular contributors (infrequent but steady is fine! all levels of experience welcome)
+* code reviewers
+* UX designers
+* domain experts (run a bail fund? work as a public defender? a formerly incarcerated person? Let us know what more bail funds & bail fund tech can do!)
+
 ## Setup
 1. Clone down repo
 1. Download and install mysql
