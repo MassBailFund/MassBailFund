@@ -16,7 +16,7 @@ We could specifically use:
 * regular contributors (infrequent but steady is fine! all levels of experience welcome)
 * code reviewers
 * UX designers
-* domain experts (run a bail fund? work as a public defender? a formerly incarcerated person? Let us know what more bail funds & bail fund tech can do!)
+* domain experts (run a bail fund? work as a public defender? an incarcerated/formerly incarcerated person? Let us know what more bail funds & bail fund tech can do!)
 
 ## Setup
 1. Clone down repo
